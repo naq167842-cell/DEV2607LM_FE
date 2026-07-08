@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form action=""  method="get" enctype="multipart/form-data">
+        <div>
+            <label for="username">Username</label>
+            <!-- input type dạng text -->
+            <input type="text" id="username" name="username" placeholder="email@gmail.com" value="devmaster@gmail.com" >
+            <!-- name nó là một biến (tên biến là mác), gõ là mất placeholder(chữ mờ), value: giá trị mặc định đầu vào không thì điền giá trị-->
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Nhap mat khau" >
+            <input type="button" name="btn_hienthi" id="btn_hienthi" value="Hiển thị">
+        </div>
+
+        <!-- input kiểu dạng ẩn-->
+         <input type="hidden" name="MSV" id="MSV">
+
+        <!-- input kiểu checkbox (checked là tự tích)-->
+         <div>
+            <input type="checkbox" name="sothich" id="bongro">
+            <label for="bongro">Bóng Rổ</label>
+            <input type="checkbox" name="sothich" id="bongchuyen" checked>
+            <label for="bongchuyen">Bóng Đá</label>
+            <input type="checkbox" name="sothich" id="caulong">
+            <label for="caulong">Cầu Lông</label>
+         </div> 
+
+        <!-- input kiểu radio--> 
+         <div>
+            <label>Giới tính</label>
+            <input type="radio" name="gioitinh" id="nam" checked>
+            <label for="nam">Nam</label>
+            <input type="radio" name="gioitinh" id="nu">
+            <label for="nu">Nữ</label>
+         </div>
+
+        <!-- input kiểu button-->
+         <input type="button" value="Hiển thị" id="btn_button" name="btn_button"> 
+
+         <input type="file" name="avatar" id="avatar">
+         
+         <input type="color" name="color" id="color">
+
+         <input type="date" name="namsinh" id="namsinh">
+
+         <input type="month" name="month" id="month">
+
+         <input type="datetime-local" name="ngaytao" id="ngaytao">
+
+         <input type="email" name="email" id="email" required size="20"> 
+
+        <div>
+            <label for="age">Tuổi</label>
+            <input type="number" name="age" id="age" readonly>
+        </div>
+
+        <div>
+            <input type="range" name="points" min="0" max="100" value="29">
+        </div>
+
+        <div>
+            <label for="search">Search google: </label>
+            <input type="search" name="search" id="search">
+        </div>
+
+        <div>
+            <input type="time" name="time" id="time">
+        </div>
+
+        <div>
+            <input type="url" name="url" id="url">
+        </div>
+
+        <div>
+            <select name="diachi" id="diachi">
+                <option value="">-Chọn tỉnh- </option>
+                <option value="HN">Hà Nội</option>
+                <option value="HP">Hải Phòng</option>
+                <option value="HCM">Hồ Chí Minh</option>
+                <option value="LĐ">Lâm Đồng</option>
+                <option value="NT">Nha Trang</option>
+            </select>
+        </div>
+        <div>
+            <label for="mota">Mô tả</label>
+            <textarea name="mota" id="mota" cols="10" rows="10"> 
+        </textarea>
+        </div>
+
+        <!-- required: bắt buộc phải nhập, readonly: chỉ đọc không cho sửa, -->
+
+        <!-- input kiểu submit (click để đưa thông tin lên server)-->
+         <div>
+            <input type="submit" name="submit" id="submit" value="Đăng kí">
+            <input type="reset" name="reset" id="reset" value="làm mới">
+         </div>
+         
+    </form>
+</body>
+</html>

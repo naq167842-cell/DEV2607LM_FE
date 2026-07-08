@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>STT</td>
+            <td>MSV</td>
+            <td>Ho va ten</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>251210953</td>
+            <td>Nguyen Anh Quyen</td> 
+        </tr>
+    </table>
+
+    <table width="100%" border="1" cellpadding="5" cellspacing="0">
+        <caption> Danh sách sinh viên (tiêu đề bảng)</caption>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>MSV</th>
+                <th>Họ và tên</th>
+                <th>Gioi tinh</th>
+                <th>Điểm TB</th>
+            </tr>
+        </thead>
+        <body>
+            <tr>
+                <td>1</td>
+                <td>251210953</td>
+                <td>Nguyen Anh Quyen</td>
+                <td rowspan="2">Nam</td>
+                <td align="center">6</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>251210985</td>
+                <td>Tran Dinh Nam</td>
+                <td align="center">7</td>
+            </tr>
+        </body>
+        <tfoot>
+            <tr>
+                <td colspan="4">Điểm trung bình</td>
+                <td align="center">6</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table border="1" width="50%" cellpadding="5" cellspacing="0" >
+        <caption>Danh sach</caption>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã sản phẩm</th>
+                <th>Hàng</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá bán</th>
+                <th>Số lượng</th>
+            </tr>
+        </thead>
+        <body>
+            <tr>
+                <td align="center">1</td>
+                <td>SP01</td>
+                <td rowspan="4" align="center">Iphone</td>
+                <td>Iphone 13</td>
+                <td align="center">5000000</td>
+                <td align="center">6</td>
+            </tr>
+            <tr>
+                <td align="center">2</td>
+                <td>SP02</td>
+                <td>Iphone14</td>
+                <td align="center">5000000</td>
+                <td align="center">7</td>
+            </tr>
+            <tr>
+                <td align="center">3</td>
+                <td>SP03</td>
+                <td>Iphone15</td>
+                <td align="center">5000000</td>
+                <td align="center">8</td>
+            </tr>
+            <tr>
+                <td align="center">4</td>
+                <td>SP04</td>
+                <td>Iphone16</td>
+                <td align="center">5000000</td>
+                <td align="center">9</td>
+            </tr>
+        </body>
+        <tfoot>
+            <td colspan="5" align="center">Tổng</td>
+            <td align="center">30</td>
+        </tfoot>
+    </table>
+
+
+</body>
+</html>
