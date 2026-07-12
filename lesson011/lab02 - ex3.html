@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        label {
+            display: inline-block;
+            width: 125px;
+            text-align: left;
+        }
+
+        div {
+            margin: 4px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        <h3 align="center">Đăng Ký Thành Viên</h3>
+
+
+
+        <div>
+            <label for="username">Họ và Tên</label>
+            <input type="text" name="username" id="username" size="30">
+        </div>
+
+        <div>
+            <label for="tendn">Tên đăng nhập</label>
+            <input type="text" name="tendn" id="tendn" size="30">
+        </div>
+
+        <div>
+            <label for="password">Mật khẩu</label>
+            <input type="password" name="password" id="password" size="30">
+        </div>
+
+        <div>
+            <label for="avatar">Ảnh đại diện</label>
+            <input type="file" name="avatar" id="avatar">
+        </div>
+
+        <div>
+            <label for="thu">Thư điện tử</label>
+            <input type="text" name="thu" id="thu" size="30">
+        </div>
+
+        <div>
+            <label style="display:inline-block;width:125px;">Giới tính</label>
+            <input type="radio" name="gioitinh" id="nam" checked>
+            <label for="nam" style="width:auto;">Nam</label>
+            <input type="radio" name="gioitinh" id="nu">
+            <label for="nu" style="width:auto;">Nữ</label>
+        </div>
+
+        <div>
+            <label style="display:inline-block;width:125px;">Sở thích</label>
+            <input type="checkbox" name="sothich" id="bongda" checked>
+            <label for="bongda" style="width:auto;">Bóng đá</label>
+            <input type="checkbox" name="sothich" id="xemphim">
+            <label for="xemphim" style="width:auto;">Xem phim</label>
+            <br>
+            <label style="display:inline-block;width:125px;"></label>
+            <input type="checkbox" name="sothich" id="dulich" checked>
+            <label for="dulich" style="width:auto;">Du lịch</label>
+            <input type="checkbox" name="sothich" id="boi" checked>
+            <label for="boi" style="width:auto;">Bơi</label>
+            <input type="checkbox" name="sothich" id="nghenhac" checked>
+            <label for="nghenhac" style="width:auto;">Nghe nhạc</label>
+        </div>
+
+        <div>
+            <label for="quequan">Quê quán</label>
+            <select name="quequan" id="quequan">
+                <option value="">---Chọn tỉnh---</option>
+                <option value="HN">Hà Nội</option>
+                <option value="HCM">Hồ Chí Minh</option>
+                <option value="HP">Hải Phòng</option>
+                <option value="NT">Nha Trang</option>
+                <option value="ĐN">Đà Nẵng</option>
+                <option value="H">Huế</option>
+                <option value="TH">Thanh Hóa</option>
+                <option value="TN">Thái Nguyên</option>
+                <option value="HT">Hà Tĩnh</option>
+                <option value="BN">Bắc Ninh</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="diachi">Địa chỉ</label>
+            <input type="text" name="diachi" id="diachi" size="30">
+        </div>
+
+        <div>
+            <label for="phone">Điện thoại</label>
+            <input type="text" name="phone" id="phone" size="30">
+        </div>
+
+        <div>
+            <label class="left">Mô tả ngắn</label>
+            <textarea rows="5" cols="30" style="vertical-align:middle;"></textarea>
+        </div>
+
+        <div align="center">
+            <input type="submit" name="submit" id="submit" value="Đăng kí">
+            <input type="reset" name="reset" id="reset" value="Làm lại">
+        </div>
+    </form>
+</body>
+
+</html>

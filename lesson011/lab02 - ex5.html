@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch học</title>
+    <style>
+        table th,
+        table td {
+            text-align: center;
+        }
+
+        .bg-gray {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1" width="100%" cellspacing="0" cellpadding="5">
+        <thead>
+            <tr>
+                <td rowspan="3"><b>Buổi</b></td>
+                <td colspan="3"><b>Lịch học</b></td>
+            </tr>
+
+            <tr>
+                <td class="bg-gray" colspan="2">Thời gian</td>
+                <td class="bg-gray" rowspan="2">Môn học</td>
+            </tr>
+
+            <tr>
+                <td>Bắt đầu</td>
+                <td>Kết thúc</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="bg-gray" rowspan="2"><b>Thứ 2</b></td>
+                <td class="bg-gray" rowspan="2">8:00 AM</td>
+                <td class="bg-gray" rowspan="2">12:00 AM</td>
+                <td class="bg-gray">Cơ sở dữ lệu</td>
+            </tr>
+
+            <tr>
+                <td>Nhập môn C</td>
+            </tr>
+
+            <!-- DỮ LIỆU THỨ 3 -->
+            <!-- DỮ LIỆU THỨ 3 (Cấu trúc mới chuẩn 50/50) -->
+            <!-- DỮ LIỆU THỨ 3 (Cách tiếp cận đơn giản: chia thành 4 hàng bằng nhau) -->
+            <!-- DỮ LIỆU THỨ 3 (Giữ nguyên 3 hàng, chia đôi bằng bảng phụ) -->
+            <tr>
+                <td rowspan="3" class="bg-gray font-bold"><b>Thứ 3</b></td>
+                <td class="bg-gray">8:00 AM</td>
+                <td class="bg-gray">12:00 AM</td>
+                <!-- Ô môn học gộp 3 dòng, xóa padding và lấp đầy bằng bảng phụ -->
+                <td rowspan="3" style="padding: 0;">
+                    <table style="width: 100%; height: 100%; border-collapse: collapse; border: none;">
+                        <tr>
+                            <!-- Chiều cao 50% tự động chia đều -->
+                            <td class="bg-gray"
+                                style="height: 50%; border: none; border-bottom: 2px solid #000; padding: 12px;">Thiết
+                                kế web</td>
+                        </tr>
+                        <tr>
+                            <td class="bg-gray" style="height: 50%; border: none; padding: 12px;">PHP</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>2:00 PM</td>
+                <td>5:00 PM</td>
+            </tr>
+            <tr>
+                <td class="bg-gray">6:00 PM</td>
+                <td class="bg-gray">8:00 PM</td>
+            </tr>
+
+            <tr>
+                <td><b>Thứ 4</b></td>
+                <td>2:00 AM</td>
+                <td>9:00 PM</td>
+                <td>JAVA CORE</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

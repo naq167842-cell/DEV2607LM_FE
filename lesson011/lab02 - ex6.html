@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký thông tin người dùng</title>
+    <style>
+        form {
+            width: 900px;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: left;
+        }
+
+        div {
+            margin: 4px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="">
+        <h3>Đăng ký thông tin người sử dụng</h3>
+
+        <div>
+            <label for="username">Tên đăng nhập</label>
+            <input type="text" name="username" id="username" size="30">
+        </div>
+
+        <div>
+            <label for="password">Mật khẩu</label>
+            <input type="text" name="password" id="password" size="30">
+        </div>
+
+        <div>
+            <label for="reset_password">Nhập lại mật khẩu</label>
+            <input type="text" name="reset_password" id="reset_password" size="30">
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" size="40">
+        </div>
+
+        <div>
+            <label>Giới tính</label>
+            <input type="radio" name="gioitinh" id="nam" checked>
+            <label for="nam" style="width: auto;">Nam</label>
+            <input type="radio" name="gioitinh" id="nu">
+            <label for="nu">Nữ</label>
+        </div>
+
+        <div>
+            <label style="display: inline-block;width: 150px;">Độ tuổi</label>
+            <input type="radio" name="tuoi" id="duoi13tuoi" checked>
+            <label for="duoi13tuoi" style="width: auto;">Dưới 13 tuổi</label>
+            <input type="radio" name="tuoi" id="13den17">
+            <label for="13den17" style="width: auto;">Từ 13 đến 17 tuổi</label>
+            <input type="radio" name="tuoi" id="18den25">
+            <label for="18den25" style="width: auto;">Từ 18 đến 25 tuổi</label>
+            <input type="radio" name="tuoi" id="tren25">
+            <label for="tren25" style="width: auto;">Trên 25 tuổi</label>
+        </div>
+
+        <div>
+            <label>Sở thích của bạn</label>
+            <input type="checkbox" name="sothich" id="amnhac">
+            <label for="amnhac" style="width: auto;">Âm nhạc</label>
+            <input type="checkbox" name="sothich" id="game">
+            <label for="game" style="width: auto;">Game</label>
+            <input type="checkbox" name="sothich" id="thethao">
+            <label for="thethao" style="width: auto;">Thể thao</label>
+            <input type="checkbox" name="sothich" id="dulich">
+            <label for="dulich" style="width: auto;">Du lịch</label>
+        </div>
+
+        <div>
+            <label for="nghenghiep">Nghề nghiệp</label>
+            <select name="nghenghiep" id="nghenghiep">
+                <option value="">Chọn ngành nghề</option>
+                <option value="CA">Công an</option>
+                <option value="BS">Bác sĩ</option>
+                <option value="CN">Công nhân</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="left">Mô tả bản thân</label>
+            <textarea rows="3" cols="40" style="vertical-align: middle;"
+                placeholder="Mô tả về bản thân bạn..."></textarea>
+        </div>
+
+        <div align="center">
+            <input type="submit" name="submit" id="submit" value="Đăng ký">
+            <input type="reset" name="reset" id="reset" value="Làm lại">
+        </div>
+    </form>
+</body>
+
+</html>
