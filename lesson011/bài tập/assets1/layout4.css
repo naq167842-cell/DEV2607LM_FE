@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;    
+}
+
+body{
+    font-family: Arial;    
+}
+
+/* Container làm mốc */
+.contanier{
+    width: 500px;
+    height: 300px;
+    border: 2px solid black;
+    position: relative;  /* Quan trọng */
+    margin: 30px auto;
+}
+
+/* Box chung */
+.box{
+    width: 100px;
+    height: 100px;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+}
+
+/* Box 1 */
+.box1 {
+    background: blue;    
+}
+
+/* Box 2 */
+.box2 {
+    background: green;
+    position: relative;
+    top: 20px;
+    left: 20px;    
+}
+
+/* Box 3 - absolute */
+.box3{
+    background: red;
+    position: absolute;
+    top: 50px;
+    right: 20px;    
+}
+
+
+
+

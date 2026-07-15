@@ -1,0 +1,32 @@
+/* 1. Bộ chọn theo thẻ */
+p{
+    color: blue;
+    font-size: 16px;    
+}
+
+/* 2. Bộ chọn theo class */
+.highlight{
+    background-color: yellow;
+    font-weight: bold;    
+}
+
+/* 3. Bộ chọn theo ID */
+#special {
+    color: red;
+    font-size: 18px;    
+}
+
+/* 4. Bộ chọn theo hậu duệ */
+.box p{
+    color: green;    
+}
+
+/* 5. Bộ chọn theo nhóm */
+h1, h2{
+    color: purple;
+}
+
+/* 6. Trang trí thêm */
+ul li{
+    color: orange;
+}

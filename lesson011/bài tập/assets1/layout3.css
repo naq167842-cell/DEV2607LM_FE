@@ -1,0 +1,41 @@
+body{
+    font-family: Arial;
+}
+
+/* 1. Đơn vị px */
+.box-px{
+    width: 200px;
+    height: 80px;
+    background: lightblue;
+    margin-bottom: 15px;
+}
+
+/* 2. Đơn vị % */
+.box-percent{
+    width: 50%;
+    height: 80px;
+    background: lightgreen;
+    margin-bottom: 15px;
+}
+/* 3. Đơn vị em */
+.box-em{
+    font-size: 20px;
+    width: 15em;
+    background: orange;
+    padding: 1em;
+    margin-bottom: 15px;
+}
+/* 4. Đơn vị rem */
+.box-rem{
+    font-size: 1.5rem;
+    background: pink;
+    padding: 1rem;
+    margin-bottom: 15px;
+}
+/* 5. Đơn vị vw */
+.box-vw{
+    width: 50vw;
+    height: 60px;
+    background: violet;
+    
+}

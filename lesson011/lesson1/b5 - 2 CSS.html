@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS selector cơ bản</title>
+    <style>
+        /* CSS selector với tên thẻ HTML */
+        p{
+            background-color: green;    
+        }
+
+        /* CSS selector với tên ID của thẻ HTML */
+        #test{
+            color: yellow;
+        }
+
+        /* CSS selector với tên class của thẻ HTML */
+        .fs-32{
+            font-size: 32px;
+        }
+
+        .fw-bold{
+            font-weight: bold;
+        }
+
+        /* CSS selecr với tên thuộc tính + giá trị thuộc tính của thẻ HTML */
+        [type="text"]{
+            border: 5px solid red;     
+        }
+
+        [type="text"]{
+            background-color: aqua;    
+        }
+
+    </style>
+</head>
+<body>
+    <p class="fs-32 fw-bold">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis reprehenderit atque illum libero ea suscipit ipsum porro ipsam? Itaque vel commodi ab eum quisquam unde velit officiis? Aliquam, illo explicabo!
+    </p>
+
+    <p id="test" class="fw-bold fs-32">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eaque reprehenderit quae odit nihil repellat inventore dicta nesciunt tenetur quis a sed quo similique dolor, temporibus asperiores facilis cupiditate corporis?
+    </p>
+
+    <input type="text" name="username" id="username">
+    <input type="password" name="password" id="password">
+</body>
+</html>

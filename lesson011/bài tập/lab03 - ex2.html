@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thẻ nhóm nội dung - Progress - Datalist</title>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>Thông tin báo cáo</legend>
+            <label for="">Thiết kế giao diện web</label>
+            <progress value="80" max="100"></progress> <br />
+            <label for="">Phân tích sơ đồ thực tế</label>
+            <progress value="50" max="100"></progress> <br />
+            <label for="">Viết tài liệu phân tích thiết kế</label>
+            <progress value="30" max="100"></progress>
+        </fieldset>
+        <br />
+
+        <fieldset>
+            <legend>Thông tin danh sách môn học</legend>
+            <input type="text" name="search" id="search" list="listmonhoc">
+            <datalist id="listmonhoc">
+                <option value="Làm việc với Javas"></option>
+                <option value="Làm việc với Photoshop"></option>
+                <option value="Làm việc với Bootstrap"></option>
+                <option value="Làm việc với PHP"></option>
+                <option value="PHP Framework Yii2"></option>
+            </datalist>
+        </fieldset>
+    </form>
+</body>
+
+</html>
