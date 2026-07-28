@@ -1,0 +1,33 @@
+body{
+    font-family: Arial;    
+}
+
+/* 1. BLOCK */
+.block-box{
+    display: block;
+    background: lightblue;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+/* 2. Inline */
+.inline-box{
+    display: inline;
+    background: pink;
+    padding: 5px;    
+}
+
+/* 3. Inline-block (menu ngang) */
+.menu-item{
+    display: inline-block;
+    width: 120px;
+    background: orange;
+    padding: 10px;
+    text-align: center;
+    margin: 5px;    
+}
+
+/* 4. Display name */
+.hidden-box{
+    display: none;    
+}

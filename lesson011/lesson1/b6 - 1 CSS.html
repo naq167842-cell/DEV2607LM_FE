@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        #product{
+            display: grid;
+            /* gird-template-columns: repeat(3, 1fr); */
+            /* grid-template-columns: 300px 1fr 3fr 2fr; */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-rows: 300px 20vh;
+            gap: 1rem;
+        }
+
+        .item{
+            background-color: pink;
+            padding: 1rem;
+            border-radius: .5rem;
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Grid Layout</h1>
+    <hr>
+    <div id="product">
+        <div class="item">SP 01</div>
+        <div class="item">SP 02</div>
+        <div class="item">SP 03</div>
+        <div class="item">SP 04</div>
+        <div class="item">SP 05</div>
+        <div class="item">SP 06</div>
+    </div>
+</body>
+</html>

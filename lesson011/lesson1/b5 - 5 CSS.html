@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS selector nâng cao</title>
+    <style>
+      /* tag01 tag 02: CSS tag02 nằm trong tag-01 */
+      #box1 span {
+        color: red;
+      }
+      /* tag01 */
+      #box2 > span {
+        color: green;
+      }
+      /* Tag01+Tag02: CSS tag01 nằm liền sau tag01 */
+      #box3 > p + span {
+        color: blue;
+      }
+
+      /* Tag01~Tag02: CSS tag02 nằm sau tag01 */
+      #box4 p ~ span {
+        color: yellow;
+      }
+      #box1,
+      #box2 {
+        background-color: yellow;
+      }
+      /* nguyên tắc ưu tiên trong CSS 
+    -CSS viết sau được ưu tiền sử dụng
+    - !important >#tên_id > [tên_thuộc_tính+ giá_trị] > .tên_class> tên_
+    -CSS càng chi tiết và càng gần thì càng được ưu tiên
+    */
+      div {
+        background-color: aqua;
+        /* background-color: aqua !important; */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <h2> Tag 01 Tag02<h2> -->
+    <div id="box1">
+      <span>Tag01 Tag02</span>
+      <p>
+        <span>Tag01 Tag02</span>
+      </p>
+    </div>
+
+    <div id="box2">
+      <span>Tag01 >Tag02</span>
+      <p>
+        <span>tag01>tag02</span>
+        <span>tag01>tag02</span>
+        <span>tag01>tag02</span>
+      </p>
+    </div>
+    <div id="box3">
+      <p>tag01+tag02</p>
+      <span>tag01+tag02</span>
+      <span>tag01+tag02</span>
+      <span>tag01+tag02</span>
+      <div>
+        <span>tag01+tag02</span>
+      </div>
+    </div>
+    <div id="box4">
+      <p>tag01~tag02</p>
+      <span>tag01~tag02</span>
+      <span>tag01~tag02</span>
+      <span>tag01~tag02</span>
+      <div>
+        <span>tag01~tag02</span>
+      </div>
+    </div>
+  </body>
+</html>

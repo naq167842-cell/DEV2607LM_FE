@@ -1,0 +1,24 @@
+body{
+    font-family: Arial;    
+}
+
+/* FLEX CONTAINER */
+.container{
+    display: flex;
+    justify-content: center;   /* căn ngang */
+    align-items: center;  /* căn dọc */
+    gap: 20px;   /* khoảng cách */
+    height: 300px;
+    background: #f2f2f2;
+}
+
+.item{
+    width: 100px;
+    height: 80px;
+    background: orange;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

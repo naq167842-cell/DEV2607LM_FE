@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid bố cục</title>
+    <style>
+        body{
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: 100px 100px 100px;
+            grid-template-areas: 
+                "header header"
+                "sidebar content"
+                "footer footer";
+            gap: 10px;
+            min-height: calc(100vh, 24px);
+        }
+
+        header{
+            grid-area: header;
+            background: lightblue;    
+        }
+        .sidebar{
+            grid-area: sidebar;
+            background: lightyellow;    
+        }
+        .content{
+            grid-area: content;
+            background: lightgreen;    
+        }
+
+        footer {
+            grid-area: footer;
+            background: lightcoral;    
+        }
+    </style>
+</head>
+<body>
+    <header>Header</header>
+    <section class="sidebar">Sidebar</section>
+    <section class="content">Nội dung</section>
+    <footer>Footer</footer>
+</body>
+</html>

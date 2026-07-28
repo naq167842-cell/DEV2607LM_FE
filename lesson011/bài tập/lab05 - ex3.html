@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab04-ex4</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .product {
+            background-color: #efefef;
+            width: 380px;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        /* --- Tiêu đề TIN TỨC --- */
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            position: relative;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Đường gạch màu xanh dưới tiêu đề */
+        .title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 4px;
+            background-color: green;
+            transition: width 0.5s;
+        }
+
+        .title:hover::after {
+            width: 100%;
+        }
+
+        .news-card {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background-color: #fff;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .image-container .tooltip {
+            position: absolute;
+            bottom: 15px;
+            right: 0;
+            background-color: #ffffff;
+            color: #333;
+            padding: 5px 10px;
+            font-size: 12px;
+            border: 1px solid #ccc;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 5;
+        }
+
+        .image-container:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .article-title {
+            font-size: 16px;
+            line-height: 1.4;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .publish-date {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .publish-date i {
+            color: green;
+        }
+
+        .article-excerpt {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="product">
+        <h2 class="title">TIN TỨC</h2>
+
+        <div class="news-card">
+            <!-- Di chuột vào đây sẽ hiện Tooltip -->
+            <div class="image-container">
+                <img src="https://dailythueminhchau.vn/wp-content/uploads/2020/06/nganh-san-xuat-hoa-chat-co-ban-1.jpg"
+                    alt="Ngành sản xuất hóa chất cơ bản">
+                <div class="tooltip">Chế phẩm hóa học là gì? Và</div>
+            </div>
+
+            <h3 class="article-title">
+                Chế phẩm hóa học là gì? Và những điều cần lưu ý khi sử dụng
+            </h3>
+
+            <div class="publish-date">
+                <i class="far fa-clock"></i> 06/06/2019
+            </div>
+
+            <p class="article-excerpt">
+                NaOH hay còn được gọi dưới cái tên Sodium hydroxide, tên gọi trong hóa học là Natri Hydroxit. Các dạng
+                cấu trúc: xút vảy, xút hạt, xút lỏng....
+            </p>
+        </div>
+
+    </div>
+    </div>
+
+</body>
+
+</html>

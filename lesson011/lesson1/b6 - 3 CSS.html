@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive</title>
+    <style>
+      /* * {
+        background-color: red;
+      } */
+      /* @media (min-width: 768px) {
+        * {
+          background-color: green;
+        }
+      }
+
+      @media (min-width: 992px) {
+        * {
+          background-color: blue;
+        }
+      } */
+
+      /* @media (max-width: 991px) {
+        * {
+          background-color: blue;
+        }
+      }
+      @media (max-width: 767px) {
+        * {
+          background-color: green;
+        }
+      } */
+      /* @media (min-width: 0) and (max-width: 767px) {
+        * {
+          background-color: blue;
+        }
+      }
+      @media (min-width: 768px) and (max-width: 991px) {
+        * {
+          background-color: green;
+        }
+      } */
+      .img {
+        max-width: 100%;
+      }
+      p{
+        font-size: clamp(24px, 4vw, 44px);
+      }
+    </style>
+  </head>
+  <body>
+    <img class="img"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm7BlWGwee6_-OeWy3n2FDW9LEjpALBtPc3KeRYFoC_w&s=10"
+      alt="avatar"
+    />
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, maxime laborum inventore quam odit alias maiores recusandae pariatur expedita voluptatibus in, autem molestiae sed aliquam corrupti sunt neque quis eos!</p>
+  </body>
+</html>

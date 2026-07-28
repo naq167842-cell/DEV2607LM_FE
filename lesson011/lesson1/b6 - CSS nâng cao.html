@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Font</title>
+    <!-- cách 1 -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Faster+One&family=Fleur+De+Leah&display=swap"
+      rel="stylesheet"
+    /> -->
+    <style>
+        /* Cách 1 */
+      h2 {
+        font-family: "Faster One", system-ui;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      /* Cách 2 */
+      @font-face {
+        font-family: "Fleur De Leah";
+        src: url(assets/fonts/FleurDeLeah-Regular.ttf);
+      }
+      p{
+         font-family: "Fleur De Leah", system-ui;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Google Font</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+      officiis, facere ipsum itaque eius assumenda consequuntur. Quisquam alias
+      cumque doloribus quidem, quasi facilis sint vel dignissimos adipisci
+      obcaecati impedit. Quisquam.
+    </p>
+  </body>
+</html>

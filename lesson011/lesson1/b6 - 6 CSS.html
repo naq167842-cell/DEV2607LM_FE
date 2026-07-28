@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudo element</title>
+    <style>
+      .link {
+        position: relative;
+      }
+      .link::after {
+        content: "";
+        height: 10px;
+        width: 0;
+        background-color: green;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transition: width 0.5s;
+      }
+      .link:hover::after {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="link">Pseudo element</h1>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, ab?
+      Distinctio natus aliquam, qui rerum deserunt rem facere quidem atque amet
+      quo quibusdam repellendus maxime aperiam nostrum dignissimos vero alias!
+    </p>
+  </body>
+</html>

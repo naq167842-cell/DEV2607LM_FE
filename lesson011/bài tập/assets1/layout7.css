@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    font-family: Arial;    
+}
+
+/* 1. MENU FIXED */
+.navbar {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Tạo khoảng cách nội dung */
+.content{
+    margin-top: 80px;
+    padding: 20px;
+}
+
+/* 2. STICKY */
+.sticky-title {
+    background: orange;
+    padding: 10px;
+    position: sticky;
+    top: 60px;
+}
+
+/* 3. BACK TO TOP */
+.back-top{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: red;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
