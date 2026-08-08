@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addEventListener</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;    
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        section{
+            margin: 1rem auto;
+            padding: 1rem;
+            width: 500px;
+            border: 1px solid green;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        button{
+            background-color: green;
+            color: #fff;
+            padding: 1rem 2rem;
+            margin: 1rem auto;
+            border: none;
+            border-radius: 999px;
+            font-size: 2rem;
+            cursor: pointer;    
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>addEventListener</h1>
+        <button>click here</button> <br>
+        <span></span>
+    </section>
+
+    <script>
+        let dem = 0;
+        document.querySelector("button").addEventListener('click', function(){
+            dem++;
+            document.querySelector("span").innerHTML = "Số lần click:" + dem;    
+        });
+    </script>
+</body>
+</html>

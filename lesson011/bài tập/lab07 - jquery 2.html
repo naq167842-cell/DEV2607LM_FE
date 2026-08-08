@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đổi ảnh</title>
+    <style>
+        #main {
+            width: 670px;
+            margin: 0 auto;
+            height: 446px;
+        }
+
+        #thum ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 8px;
+        }
+
+        #thum ul li {
+            float: left;
+            margin-right: 2px;
+        }
+
+        #thum ul li a img {
+            width: 100px;
+            border: 2px solid #ccc;
+        }
+
+        .actived {
+            border: 4px solid #ff3b30 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="image">
+            <img id="main-img" src="https://picsum.photos/id/10/670/370" alt="Ảnh chính">
+        </div>
+        <div id="thum">
+            <ul>
+                <li><a href="javascript:void(0)"><img src="https://picsum.photos/id/10/670/370" alt=""
+                            class="actived"></a></li>
+                <li><a href="javascript:void(0)"><img src="https://picsum.photos/id/15/670/370" alt=""></a></li>
+                <li><a href="javascript:void(0)"><img src="https://picsum.photos/id/28/670/370" alt=""></a></li>
+                <li><a href="javascript:void(0)"><img src="https://picsum.photos/id/40/670/370" alt=""></a></li>
+                <li><a href="javascript:void(0)"><img src="https://picsum.photos/id/58/670/370" alt=""></a></li>
+                <li><a href="javascript:void(0)"><img src="https://picsum.photos/id/64/670/370" alt=""></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="jquery/jquery-4.0.0.js"></script>
+    <script>
+        $(document).ready(function ($) {
+            $("#thum img").click(function (event) {
+                var newSrc = $(this).attr('src');
+                $("#main-img").attr('src', newSrc);
+                $("#thum img").removeClass('actived');
+                $(this).addClass('actived');
+            });
+        });
+    </script>
+</body>
+
+</html>

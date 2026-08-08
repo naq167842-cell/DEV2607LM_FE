@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Làm việc với object</title>
+    <style>
+        body {
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 600px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: green;
+            font-size: 26px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .btn-box button {
+            background-color: #005a32;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 25px;
+        }
+
+        .btn-box button:hover {
+            background-color: #004225;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #005a32;
+            color: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            color: #333;
+        }
+
+        .con-hang {
+            color: #005a32;
+            font-weight: bold;
+        }
+
+        .het-hang {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DANH SÁCH SẢN PHẨM</h1>
+
+        <div class="btn-box">
+            <button onclick="loadProducts()">Load sản phẩm</button>
+        </div>
+        <div id="productTable"></div>
+    </div>
+
+    <script>
+        // Hàm tạo đối tượng Product
+        function Product(id, name, quantity, price, status){
+            this.id = id;
+            this.name = name;
+            this.quantity = quantity;
+            this.price = price;
+            this.status = status;    
+        }
+
+        // Danh sách 05 sản phẩm
+        const productList = [
+            new Product(1, "Laptop Dell", 10, 15000000, "Còn hàng"),    
+            new Product(2, "Chuột Logitech", 25, 350000, "Còn hàng"),    
+            new Product(3, "Bàn phím Dareu", 15, 500000, "Còn hàng"),    
+            new Product(4, "Màn hình LG", 8, 3200000, "Còn hàng"),    
+            new Product(5, "USB Kingston", 0, 200000, "Hết hàng"),    
+        ];
+
+        // Màn hiển thị danh sách sản phẩm bằng DOM
+        function loadProducts(){
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                <tbody>    
+        `;
+
+            for(let i = 0; i < productList.length; i++){
+                html += `
+                    <tr>
+                        <td>${productList[i].id}</td>               
+                        <td>${productList[i].name}</td>               
+                        <td>${productList[i].quantity}</td>               
+                        <td>${productList[i].price.toLocaleString('vi-VN')}đ</td>
+                        <td class="${productList[i].status === 'Còn hàng' ? 'con-hang' : 'het-hang'}">               
+                            ${productList[i].status}
+                        </td>
+                    </tr>
+                    `;
+                }
+                
+                html += `
+                        </tbody>
+                    </table>    
+                `;
+
+                document.getElementById("productTable").innerHTML = html;
+            }
+    </script>
+</body>
+</html>

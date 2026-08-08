@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+</head>
+
+<body>
+    <h2 id="ten-tieu-de">Tiêu đề</h2>
+    <button onclick="ThayDoiTieuDe()">thay đổi tiêu đề</button>
+
+    <p class="content">Nội dung 1</p>
+    <p class="content">Nội dung 2</p>
+    <p class="content">Nội dung 3</p>
+    <button onclick="ThayDoiMauSac()">thay dổi màu sắc</button>
+    <button onclick="ThayDoiBackground()">thay đổi background</button>
+    <button onclick="DOM_CSS_Selector()">DOM CSS Selector</button>
+
+    <button id="btn">Click me</button>
+    <script>
+        function ThayDoiTieuDe() {
+            // DOM tương tác với tên ID
+            document.getElementById("ten-tieu-de").innerHTML = "Devmaster";
+        }
+
+        function ThayDoiMauSac() {
+            // DOM tương tác với tên class
+            // document.getElementsByClassName("content")[0].style.color = "red";
+            let content = document.getElementsByClassName("content");
+            console.log(content);
+            for (let i = 0; i < content.length; i++) {
+                content[i].style.color = "red";
+            }
+        }
+        function ThayDoiBackground() {
+            // DOM tương tác với tên thẻ HTML
+            // document.getElementsByTagName("p")[0].style.background = "yellow";
+            let content = document.getElementsByTagName("p");
+            for (let i = 0; i < content.length; i++) {
+                content[i].style.background = "yellow";
+            }
+        }
+
+        function DOM_CSS_Selector() {
+            // DOM tương tác với HTML bằng cú pháp CSS Selector
+            // console.log()
+            document.querySelectorAll("#ten-tieu-de")[0].innerHTML =
+                "DOM_CSS_Selector";
+            let content = document.querySelectorAll(".content");
+            for (let i = 0; i < content.length; i++) {
+                content[i].style.color = "blue";
+            }
+            let ten_the = document.querySelectorAll("p");
+            for (let i = 0; i < ten_the.length; i++) {
+                ten_the[i].style.background = "#ccc";
+            }
+        }
+
+        document.getElementById("btn").onclick = function () {
+            alert("onclick")
+        } 
+    </script>
+</body>
+
+</html>

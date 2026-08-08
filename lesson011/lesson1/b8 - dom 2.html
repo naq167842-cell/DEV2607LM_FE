@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Events Example</title>
+</head>
+
+<body>
+    <h2 id="title">Example DOM Event</h2>
+    <!-- Click Event -->
+    <button id="btnClick">Click me</button>
+    <br /><br />
+    <!-- Mouse Event -->
+    <p id="hoverText">Hover here</p>
+    <br />
+    <!-- Keyboard Event -->
+    <input type="text" id="nameInput" placeholder="Enter your name" />
+    <p id="result"></p>
+    <br />
+    <!-- Change Event -->
+    <select id="colorSelect">
+        <option value="">Select color</option>
+        <option value="red">Đỏ</option>
+        <option value="blue">Xanh</option>
+        <option value="green">Lá</option>
+    </select>
+    <script>
+        document.getElementById("hoverText").onmouseover = function () {
+            document.getElementById("hoverText").style.color = "red";
+        };
+        document.getElementById("nameInput").onkeyup = function () {
+            // document.getElementById("nameInput").style.border = "1px solid red";
+            // document.getElementById("nameInput").style.color = "red";
+            document.getElementById("title").innerHTML =
+                document.getElementById("nameInput").value;
+        };
+        document.getElementById("colorSelect").onchange = function () {
+            let mau_sac = document.getElementById("colorSelect").value;
+            document.getElementById("title").style.color = mau_sac;
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thao tác thuộc tính</title>
+</head>
+
+<body>
+    <h1>DOM thao tác với các thuộc tính của phần tử HTML</h1>
+    <h3>Ví dụ: Thay đổi ảnh</h3>
+    <div id="img">
+        <img id="myImage" src="https://picsum.photos/200" width="200">
+    </div>
+    <button onclick="changeImage()">Đổi ảnh</button>
+    <script>
+        function changeImage() {
+            document.getElementById("myImage").src = "https://devmaster.edu.vn/images/logo.png";
+        }
+    </script>
+</body>
+
+</html>

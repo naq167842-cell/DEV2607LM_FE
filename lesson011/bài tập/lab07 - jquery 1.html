@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đổi màu chữ</title>
+    <style>
+        #main {
+            border: solid 1px #ccc;
+            padding: 10px;
+            width: 350px;
+        }
+
+        .clearfix {
+            overflow: hidden;
+            clear: both;
+        }
+
+        #main ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #main ul li {
+            float: left;
+        }
+
+        #main ul li a {
+            display: block;
+            border: solid 1px #ccc;
+            padding: 5px 10px;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        #content {
+            padding: 15px 0;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .maudo {
+            color: red;
+        }
+
+        .mauxanh {
+            color: green;
+        }
+
+        .mauvang {
+            color: yellow;
+        }
+
+        .mautim {
+            color: violet;
+        }
+
+        .mauhong {
+            color: pink;
+        }
+    </style>
+
+    <script src="jquery/jquery-4.0.0.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("a").click(function (e) {
+                e.preventDefault();
+
+                var mau = $(this).attr("id");
+
+                $("#content")
+                    .removeClass("maudo mauxanh mauvang mautim mauhong")
+                    .addClass(mau);
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="main">
+        <h3>Chọn màu chữ</h3>
+        <ul class="clearfix">
+            <li><a href="javascript:void(0)" id="maudo">Đỏ</a></li>
+            <li><a href="javascript:void(0)" id="mauxanh">Xanh</a></li>
+            <li><a href="javascript:void(0)" id="mauvang">Vàng</a></li>
+            <li><a href="javascript:void(0)" id="mautim">Tím</a></li>
+            <li><a href="javascript:void(0)" id="mauhong">Hồng</a></li>
+        </ul>
+        <div id="content" class="clearfix">Lập trình web với PHP</div>
+    </div>
+</body>
+
+</html>

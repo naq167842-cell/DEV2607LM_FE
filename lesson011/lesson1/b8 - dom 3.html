@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regular Exception</title>
+    <style>
+        .err {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" />
+        <p class="err">Chưa đúng định dạng email</p>
+    </div>
+    <div>
+        <label for="pass">Password:</label>
+        <input type="password" name="password" id="pass" />
+        <p class="err">Pas chứa it nhất 8 ký tự và có chữ hoa và số</p>
+    </div>
+    <div>
+        <button>Đăng nhập</button>
+        <button id="btn-show-pass">Hiện thị mật khẩu</button>
+    </div>
+
+    <script>
+        var regxEmail =
+            /^(?!.*\.\.)[A-Za-z0-9]+([._%+-]?[A-Za-z0-9]+)*@[A-Za-z0-9]+([.-]?[A-Za-z0-9]+)*\.[A-Za-z]{2,}$/;
+        var regxPass =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+        var inputEmail = document.getElementById("email");
+        var inputPass = document.getElementById("pass");
+        document.getElementById("btn-show-pass").onclick = function () {
+            if (inputPass.getAttribute("type") === "password") {
+                inputPass.setAttribute("type", "text");
+            } else {
+                inputPass.setAttribute("type", "password");
+            }
+        };
+        inputEmail.onblur = function () {
+            // if(!regxEmail.test(inputEmail.value)){
+            //     document.getElementsByClassName("err")[0].style.display = "block"
+            // }else{
+            //      document.getElementsByClassName("err")[0].style.display = "none"
+            // }
+            if (!regxEmail.test(inputEmail.value)) {
+                this.nextElementSibling.style.display = "block";
+            } else {
+                this.nextElementSibling.style.display = "none";
+            }
+        };
+        inputPass.onblur = function () {
+            if (!regxPass.test(inputPass.value)) {
+                this.nextElementSibling.style.display = "block";
+            } else {
+                this.nextElementSibling.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>
