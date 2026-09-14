@@ -1,0 +1,117 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+header,section {
+margin: 1rem auto;
+width: 80%;
+}
+section{
+display: flex;
+justify-content: space-between;
+align-items: stretch;
+gap: 1rem;
+}
+.box{
+border: 1px solid #ccc;
+padding: 1rem;
+max-width: 100%;
+box-shadow: 10px 5px 15px 5px rgba(0, 0, 0, 0.5);
+border-radius: 5px;
+}
+
+.box-left{
+width: 100%;
+}
+.box-right{
+    display: block;
+    display: none;
+width: 40%;
+}
+.form-group{
+display: flex;
+justify-content: space-between;
+margin: .25rem 0;
+}
+.list{
+    width: 100%;
+}
+.btn{
+border: 1px solid #ccc;
+border-radius: .25rem;
+padding: .25rem .5rem;
+cursor: pointer;
+}
+.btn-add {
+background-color: blue;
+color: #ece9e9;
+}
+.form-group input {
+border: 1px solid #ccc;
+border-radius: .5rem;
+padding: .25rem .5rem;
+width: 250px;
+}
+.table{
+width: 100%;
+}
+.table-bordered{
+border: 1px solid #ccc;
+}
+.table tr th,.table tr td {
+border-bottom: 1px solid #ccc;
+border-right: 1px solid #ccc;
+padding: .25rem;
+}
+.table tr td:last-child {
+border-bottom: none;
+border-right: none;
+text-align: center;
+width: 10rem;
+}
+.table tr:last-child td{
+border-bottom: none;
+}
+.table tr th:last-child{
+border-right: none;
+}
+.btn-xem{
+background-color: green;
+color: yellow;
+}
+.btn-sua{
+background-color: blue;
+color: #fff;
+}
+.btn-xoa{
+background-color: red;
+}
+
+/* form  */
+.row{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: .5rem 0;
+}
+.row > div{
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+.error{
+font-size: .85rem;
+font-style: italic;
+color: rgba(255, 0, 0, 0.693);
+}
+
+.row label {
+font-weight: bold;
+width: 150px;
+}
+.row input {
+width: 100%;
+border: 1px solid #ccc;
+border-radius: 5px;
+padding: .5rem;

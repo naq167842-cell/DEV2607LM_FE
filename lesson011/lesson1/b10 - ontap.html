@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thực hành tổng hợp với Jquery</title>
+  <link rel="stylesheet" href="assets/layout1.css">
+</head>
+
+<body>
+  <header>
+    <h1>QUẢN LÝ THÔNG TIN SINH VIÊN</h1>
+  </header>
+  <section>
+    <!-- chức năng / danh sách -->
+    <div class="box box-left">
+      <div class="form-group" role="form">
+        <button class="btn btn-add">Thêm mới sinh viên</button>
+        <input type="search" name="keyword" placeholder="Nhập tên cần tìm....">
+        <button class="btn">Tìm kiếm</button>
+      </div>
+      <!-- danh sách sinh viên  -->
+      <div class="list">
+        <h2>Danh sách sinh viên</h2>
+        <table cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Mã sinh viên</th>
+              <th>Họ và tên</th>
+              <th>Tuổi</th>
+              <th>Giới tính</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>SV001</td>
+              <td>Nguyễn Văn A</td>
+              <td>20</td>
+              <td>Nam</td>
+              <td>
+                <button class="btn btn-xem">Xem</button>
+                <button class="btn btn-sua">Sửa</button>
+                <button class="btn btn-xoa">Xóa</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- form thông tin sinh viên -->
+    <div class="box box-right">
+      <h2>Thông tin sinh viên</h2>
+      <form action="">
+        <div class="row">
+          <label for="studentId">Mã sinh viên</label>
+          <div>
+            <input type="text" name="studentId" id="studentId" placeholder="Nhập mã sinh viên">
+            <span class="error"></span>
+          </div>
+        </div>
+        <div class="row">
+          <label for="studentName">Họ tên sinh viên</label>
+          <div>
+            <input type="text" name="studentName" id="studentName" placeholder="Nhập họ và tên sinh viên">
+            <span class="error"></span>
+          </div>
+        </div>
+        <div class="row">
+          <label for="age">Tuổi</label>
+          <div>
+            <input type="number" name="age" id="age" placeholder="Nhập tuổi">
+            <span class="error"></span>
+          </div>
+        </div>
+        <div class="row">
+          <label for="sex">Giới tính</label>
+          <div>
+            <select name="sex" id="sex">
+              <option value="true">Nam</option>
+              <option value="false">Nữ</option>
+              <option value="null">Khác</option>
+            </select>
+            <span class="error"></span>
+          </div>
+        </div>
+        <div class="row">
+          <label for="birthDate">Tuổi</label>
+          <div>
+            <input type="datetime-local" name="birthDate" id="birthDate" />
+            <span class="error"></span>
+          </div>
+        </div>
+        <div class="row">
+          <label for="birthPlace">Nơi sinh</label>
+          <div>
+            <select name="birthPlace" id="birthPlace">
+              <option value="HN">Hà nội</option>
+              <option value="HCM">Tp Hồ Chí Minh</option>
+              <option value="ĐN">Đà nẵng</option>
+              <option value="HP">Hải phòng</option>
+            </select>
+            <span class="error"></span>
+          </div>
+        </div>
+        <div class="row">
+          <label for="address">Địa chỉ</label>
+          <div>
+            <textarea name="address" id="address"></textarea>
+            <span class="error"></span>
+          </div>
+        </div>
+        <div class="row">
+          <button data-val="0" class="btn btn-sua" id="btnAction">Đóng</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+
+
+  <!-- nhúng thư viện jquery (cdn) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0/jquery.min.js"></script>
+  <script src="jquery/app.js"></script>
+</body>

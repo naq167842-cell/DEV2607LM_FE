@@ -1,0 +1,2644 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trí Tuệ - Bookstore</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* ================= CẤU HÌNH BIẾN MÀU & RESET ================= */
+        :root {
+            --bg-cream: #FAF7F2;
+            --bg-card: #FFFFFF;
+            --primary-orange: #d95d26;
+            --primary-orange-hover: #b84a1a;
+            --text-dark: #1E2229;
+            --text-muted: #667085;
+            --text-green: #235d44;
+            --border-color: #E8E2D8;
+            --dark-green: #0F1F17;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ================= HEADER THANH TRÊN CÙNG ================= */
+        /* Ban đầu trong suốt nổi trên ảnh, cuộn xuống chuyển thành màu trắng */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 80px;
+            transition: all 0.35s ease;
+            background-color: transparent;
+        }
+
+        /* Hiệu ứng mất màu nền ảnh, hiện màu trắng rõ nét */
+        header.scrolled {
+            background-color: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Chữ và Logo căn chỉnh tuyệt đối thẳng hàng ngang */
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            color: #FFFFFF;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        header.scrolled .logo {
+            color: var(--text-dark);
+        }
+
+        .logo-icon {
+            background-color: var(--primary-orange);
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            font-size: 14.5px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            transition: color 0.25s;
+            display: inline-flex;
+            align-items: center;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-orange);
+        }
+
+        header.scrolled .nav-link {
+            color: var(--text-dark);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-btn {
+            position: relative;
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            color: var(--text-dark);
+            flex-shrink: 0;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--primary-orange);
+            color: white;
+            font-size: 11px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .btn-auth-outline {
+            background: transparent;
+            border: 1.5px solid var(--primary-orange);
+            color: var(--primary-orange);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .btn-auth-outline:hover {
+            background: var(--primary-orange);
+            color: #fff;
+        }
+
+        header:not(.scrolled) .btn-auth-outline {
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+        }
+
+        header:not(.scrolled) .btn-auth-outline:hover {
+            background: #FFFFFF;
+            color: var(--text-dark);
+        }
+
+        .btn-auth-solid {
+            background-color: var(--primary-orange);
+            color: #FFFFFF;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .btn-auth-solid:hover {
+            background-color: var(--primary-orange-hover);
+        }
+
+        .btn-admin-nav {
+            background: #235d44;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+
+        .btn-admin-nav:hover {
+            background: #194633;
+        }
+
+        /* Avatar tròn khi đăng nhập */
+        .user-profile-wrapper {
+            position: relative;
+            display: none;
+        }
+
+        .user-avatar-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            height: 38px;
+        }
+
+        .user-avatar-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-orange);
+        }
+
+        .user-name-text {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+
+        header.scrolled .user-name-text {
+            color: var(--text-dark);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 140px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .user-profile-wrapper:hover .user-dropdown {
+            display: flex;
+        }
+
+        .dropdown-btn {
+            padding: 10px 14px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 13px;
+            cursor: pointer;
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .dropdown-btn:hover {
+            background: #fee2e2;
+        }
+
+        /* ================= HERO BANNER ================= */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.72)),
+                url('https://imgs.vietnamnet.vn/Images/2017/02/16/12/20170216124858-sach-quy.jpg?width=0&s=N1FTVVGk1cBCr-bHH1il8w') center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding-top: 120px;
+            padding-bottom: 70px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Xuống dòng đúng từ 'all their' */
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 46px;
+            font-weight: 700;
+            line-height: 1.35;
+            margin-bottom: 22px;
+            letter-spacing: -0.5px;
+        }
+
+        /* 2 câu dưới mỗi câu một dòng */
+        .hero-sub-line {
+            font-size: 16.5px;
+            color: #E6ECF2;
+            display: block;
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background: var(--primary-orange);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+            font-size: 14.5px;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-orange-hover);
+        }
+
+        .btn-hero-reg {
+            background: #235d44;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-hero-reg:hover {
+            background: #194633;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .stat-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .stat-card p {
+            font-size: 13px;
+            color: #E2E8F0;
+        }
+
+        /* ================= TIÊU ĐỀ KHỐI CHUNG ================= */
+        .section-tag {
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            color: var(--text-green);
+            margin-bottom: 6px;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .section-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+        }
+
+        /* ================= SECTION: NEW RELEASE ================= */
+        .new-release-section {
+            padding: 70px 0 30px;
+        }
+
+        .new-release-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            margin-top: 20px;
+        }
+
+        /* ================= KHO SÁCH (TOÀN BỘ SÁCH & BỘ LỌC) ================= */
+        .bestseller-section {
+            padding: 40px 0 80px;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 20px 0 30px;
+        }
+
+        .filter-tab {
+            padding: 8px 18px;
+            border-radius: 20px;
+            background: #EAE3D5;
+            border: none;
+            font-size: 14px;
+            color: var(--text-dark);
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .filter-tab.active {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+            border-color: #dbc3ab;
+        }
+
+        .product-thumb {
+            position: relative;
+            height: 290px;
+            background: #F1ECE3;
+            overflow: hidden;
+        }
+
+        .product-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-thumb img {
+            transform: scale(1.04);
+        }
+
+        .badge-top-left {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--primary-orange);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 9px;
+            border-radius: 6px;
+        }
+
+        .badge-top-right {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #235d44;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .product-info {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .prod-cat {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .prod-title {
+            font-family: var(--font-heading);
+            font-size: 17px;
+            font-weight: 700;
+            margin: 4px 0 2px;
+            line-height: 1.35;
+        }
+
+        .prod-author {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .prod-rating {
+            font-size: 12px;
+            color: var(--primary-orange);
+            margin-bottom: 12px;
+        }
+
+        .prod-rating span {
+            color: var(--text-muted);
+        }
+
+        .prod-bottom {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 12px;
+        }
+
+        .price-current {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--primary-orange);
+        }
+
+        .price-old {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-left: 6px;
+        }
+
+        .btn-buy-icon {
+            background: #F4EDE4;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-buy-icon:hover {
+            background: var(--primary-orange);
+            color: #fff;
+        }
+
+        /* ================= GIỚI THIỆU & ĐÁNH GIÁ ================= */
+        .about-section {
+            padding: 60px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image-wrap {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .about-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .exp-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--primary-orange);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .exp-badge strong {
+            font-size: 18px;
+            display: block;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 12px;
+        }
+
+        .feat-icon {
+            width: 36px;
+            height: 36px;
+            background: #E8F3EE;
+            color: #235d44;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .reviews-section {
+            padding: 50px 0 70px;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .review-stars {
+            color: #E65100;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .review-text {
+            font-size: 13.5px;
+            font-style: italic;
+            color: #4A5568;
+            margin-bottom: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: var(--dark-green);
+            color: #CFD8DC;
+            padding: 60px 0 25px;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.2fr 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 22px;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #718096;
+        }
+
+        /* ================= MODAL CHI TIẾT SÁCH (HÌNH 3.5) ================= */
+        .detail-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            padding: 20px;
+        }
+
+        .detail-modal-overlay.active {
+            display: flex;
+        }
+
+        .detail-modal-box {
+            background: #fff;
+            width: 100%;
+            max-width: 860px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            animation: modalSlide 0.3s ease;
+        }
+
+        .detail-browser-bar {
+            background: #0266A4;
+            color: white;
+            padding: 8px 16px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+
+        .detail-modal-inner {
+            padding: 30px;
+        }
+
+        .close-detail-btn {
+            position: absolute;
+            top: 38px;
+            right: 20px;
+            font-size: 26px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .detail-top-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+        }
+
+        .detail-img-wrap {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 380px;
+            background: #fafafa;
+        }
+
+        .detail-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .detail-title-red {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            font-weight: 700;
+            color: #d90429;
+            margin-bottom: 12px;
+        }
+
+        .detail-price-line {
+            font-size: 22px;
+            font-weight: 700;
+            color: #d90429;
+            margin-bottom: 16px;
+        }
+
+        .detail-spec-list {
+            list-style: disc;
+            padding-left: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .detail-spec-list li {
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        .gift-box {
+            border: 1px solid #FFE0B2;
+            background-color: #FFFDF8;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 22px;
+        }
+
+        .gift-header {
+            color: #E65100;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .gift-box ul {
+            list-style: disc;
+            padding-left: 18px;
+            font-size: 12.5px;
+            color: #555;
+        }
+
+        .gift-box li span {
+            color: #d95d26;
+            font-weight: 600;
+        }
+
+        .btn-add-cart-detail {
+            background: #0277BD;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-weight: 700;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .btn-add-cart-detail:hover {
+            background: #01579B;
+        }
+
+        .detail-description-section {
+            margin-top: 30px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .detail-description-section h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .detail-description-section p {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* ================= MODAL GIỎ HÀNG ================= */
+        .cart-modal-box {
+            background: #fff;
+            width: 100%;
+            max-width: 780px;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            animation: modalSlide 0.3s ease;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .cart-table th,
+        .cart-table td {
+            border: 1px solid #E5E7EB;
+            padding: 12px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .cart-table th {
+            background: #F9FAFB;
+            font-weight: 700;
+        }
+
+        .cart-qty-btn {
+            background: #E5E7EB;
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-total-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            border-top: 2px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        .cart-total-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: #d90429;
+        }
+
+        /* ================= MODAL ADMIN (BẢNG FULL KHUNG -> THU LẠI KHI MỞ BẢNG PHỤ) ================= */
+        .admin-modal-box {
+            background: #F4F6F8;
+            width: 100%;
+            max-width: 1240px;
+            max-height: 94vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .admin-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #E2E8F0;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .admin-page-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #1E293B;
+        }
+
+        .btn-admin-login-head {
+            background: #0266A4;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .admin-nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .admin-nav-tab {
+            padding: 9px 18px;
+            border-radius: 8px;
+            border: 1px solid #CBD5E1;
+            background: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13.5px;
+            color: #475569;
+            transition: 0.2s;
+        }
+
+        .admin-nav-tab.active {
+            background: #0266A4;
+            color: white;
+            border-color: #0266A4;
+        }
+
+        /* Mặc định bảng chiếm 100% full khung */
+        .admin-layout-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        /* Khi mở bảng phụ thì thu lại thành 2 cột */
+        .admin-layout-grid.split-active {
+            grid-template-columns: 1.3fr 1fr;
+        }
+
+        .admin-card-panel {
+            background: #fff;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E2E8F0;
+        }
+
+        .admin-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .btn-admin-add-blue {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .admin-search-wrap {
+            display: flex;
+            gap: 6px;
+        }
+
+        .admin-search-input {
+            padding: 6px 12px;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            outline: none;
+            font-size: 13px;
+            width: 200px;
+        }
+
+        .btn-search-gray {
+            background: #f1f5f9;
+            border: 1px solid #CBD5E1;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .admin-table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .admin-table-custom th,
+        .admin-table-custom td {
+            border: 1px solid #DEE2E6;
+            padding: 10px 10px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .admin-table-custom th {
+            background: #F8FAFC;
+            font-weight: 700;
+            color: #1E293B;
+        }
+
+        .action-btn-group {
+            display: flex;
+            gap: 4px;
+        }
+
+        .btn-act-view {
+            background: #198754;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11.5px;
+            font-weight: 600;
+        }
+
+        .btn-act-edit {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11.5px;
+            font-weight: 600;
+        }
+
+        .btn-act-del {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11.5px;
+            font-weight: 600;
+        }
+
+        .admin-side-form {
+            display: none;
+        }
+
+        .admin-side-form.active {
+            display: block;
+        }
+
+        .admin-side-form h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .admin-form-row {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .admin-form-row label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .admin-form-row input,
+        .admin-form-row select,
+        .admin-form-row textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #CED4DA;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .btn-admin-save-green {
+            background: #198754;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-admin-cancel-gray {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-left: 6px;
+        }
+
+        /* ================= MODAL CHUNG ================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 4000;
+            padding: 16px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #fff;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .modal-tabs {
+            display: flex;
+            border-bottom: 2px solid #F1F1F1;
+            margin-bottom: 20px;
+        }
+
+        .modal-tab-btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-weight: 600;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .modal-tab-btn.active {
+            color: var(--primary-orange);
+            border-bottom: 2px solid var(--primary-orange);
+            margin-bottom: -2px;
+        }
+
+        .auth-form {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .auth-form.active {
+            display: flex;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .btn-submit-modal {
+            background: var(--primary-orange);
+            color: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            margin-top: 6px;
+        }
+
+        @media (max-width: 992px) {
+
+            .product-grid,
+            .new-release-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .admin-layout-grid.split-active {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-top-grid,
+            .about-grid,
+            .review-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .product-grid,
+            .new-release-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR TRÊN CÙNG (CĂN THẲNG HÀNG & HIỆU ỨNG CUỘN) ================= -->
+    <header id="mainHeader">
+        <div class="container navbar">
+            <a href="#home" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+                <span>Trí Tuệ - Bookstore</span>
+            </a>
+
+            <!-- Menu lướt mượt mà -->
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Trang chủ</a></li>
+                <li><a href="#newRelease" class="nav-link">New Release</a></li>
+                <li><a href="#allBooks" class="nav-link">Kho sách</a></li>
+                <li><a href="#about" class="nav-link">Giới thiệu</a></li>
+                <li><a href="#reviews" class="nav-link">Đánh giá</a></li>
+                <li><a href="#contact" class="nav-link">Liên hệ</a></li>
+            </ul>
+
+            <!-- Cụm chức năng thẳng hàng -->
+            <div class="nav-actions">
+                <!-- Nút giỏ hàng -->
+                <button class="cart-btn" id="openCartBtn" title="Xem giỏ hàng">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </button>
+
+                <!-- Nút Đăng ký -->
+                <button class="btn-auth-outline" id="navRegisterBtn">Đăng ký</button>
+
+                <!-- Nút Đăng nhập -->
+                <button class="btn-auth-solid" id="navLoginBtn">Đăng nhập</button>
+
+                <!-- Nút Admin đặt cạnh Đăng ký/Đăng nhập -->
+                <button class="btn-admin-nav" id="openAdminModal" title="Quản trị hệ thống">
+                    <i class="fa-solid fa-gear"></i> Admin
+                </button>
+
+                <!-- Trạng thái Đã đăng nhập: Avatar tròn kèm Rê chuột (hover) để Đăng xuất -->
+                <div class="user-profile-wrapper" id="userProfile">
+                    <div class="user-avatar-btn">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop"
+                            class="user-avatar-img" alt="Avatar" />
+                        <span class="user-name-text" id="userDisplayName">Độc giả</span>
+                    </div>
+                    <div class="user-dropdown">
+                        <button class="dropdown-btn" id="logoutBtn">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HERO BANNER TRUNG TÂM ================= -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <!-- Tiêu đề xuống dòng đúng từ 'all their' -->
+            <h1>Good books don't give up<br />all their secrets at once</h1>
+
+            <!-- 2 câu dưới mỗi câu một dòng -->
+            <span class="hero-sub-line">Hàng nghìn đầu sách văn học, kinh tế, kỹ năng và thiếu nhi được tuyển chọn kỹ
+                lưỡng.</span>
+            <span class="hero-sub-line">Đặt sách online nhanh chóng, nhận ngay tại nhà với mức giá ưu đãi và quà tặng
+                kèm hấp dẫn.</span>
+
+            <div class="hero-btns">
+                <a href="#allBooks" class="btn-primary"><i class="fa-solid fa-book-open"></i> Khám phá kho sách</a>
+                <button class="btn-hero-reg" id="heroRegisterBtn"><i class="fa-solid fa-user-plus"></i> Đăng ký thành
+                    viên</button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <h3 id="statBookCount">60+</h3>
+                    <p>Đầu sách tuyển chọn</p>
+                </div>
+                <div class="stat-card">
+                    <h3>48.000+</h3>
+                    <p>Độc giả tin tưởng</p>
+                </div>
+                <div class="stat-card">
+                    <h3>4.9/5</h3>
+                    <p>Điểm đánh giá trung bình</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 1. NEW RELEASE (SÁCH MỚI PHÁT HÀNH) ================= -->
+    <section id="newRelease" class="new-release-section container">
+        <div class="section-header-flex">
+            <div>
+                <div class="section-tag"><i class="fa-solid fa-sparkles"></i> Mới cập bến</div>
+                <h2 class="section-title">New Release - Sách Mới Phát Hành</h2>
+            </div>
+            <a href="#allBooks" style="color: var(--primary-orange); font-weight:600;">Xem toàn bộ sách <i
+                    class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <!-- 4 cuốn New Release ấn tượng -->
+        <div class="new-release-grid" id="newReleaseGrid"></div>
+    </section>
+
+    <!-- ================= 2. TOÀN BỘ KHO SÁCH (CHIA THỂ LOẠI: 8-10 SÁCH/MỤC) ================= -->
+    <section id="allBooks" class="bestseller-section container">
+        <div class="section-tag">Bộ sưu tập tri thức</div>
+        <h2 class="section-title">Toàn bộ kho sách tại Trí Tuệ</h2>
+        <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+            Mỗi thể loại gồm từ 8 đến 10 cuốn sách được phân loại bài bản. Bấm vào sách để xem chi tiết và nhận quà
+            tặng.
+        </p>
+
+        <!-- Bộ lọc thể loại (có Sách Nước Ngoài) -->
+        <div class="filter-tabs" id="categoryTabs">
+            <button class="filter-tab active" onclick="filterCategory('all', this)">Tất cả</button>
+            <button class="filter-tab" onclick="filterCategory('Kỹ năng sống', this)">Kỹ năng sống (8)</button>
+            <button class="filter-tab" onclick="filterCategory('Kinh tế', this)">Kinh tế (8)</button>
+            <button class="filter-tab" onclick="filterCategory('Văn học', this)">Văn học (8)</button>
+            <button class="filter-tab" onclick="filterCategory('Thiếu nhi', this)">Thiếu nhi (8)</button>
+            <button class="filter-tab" onclick="filterCategory('Lịch sử', this)">Lịch sử (8)</button>
+            <button class="filter-tab" onclick="filterCategory('Khoa học', this)">Khoa học (8)</button>
+            <button class="filter-tab" onclick="filterCategory('Sách Nước Ngoài', this)">Sách Nước Ngoài (8)</button>
+        </div>
+
+        <!-- Lưới sách chính -->
+        <div class="product-grid" id="mainBookGrid"></div>
+    </section>
+
+    <!-- ================= 3. GIỚI THIỆU (VÌ SAO CHỌN CHÚNG TÔI) ================= -->
+    <section id="about" class="about-section">
+        <div class="container about-grid">
+            <div class="about-image-wrap">
+                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=800&auto=format&fit=crop"
+                    alt="Giới thiệu" />
+                <div class="exp-badge">
+                    <strong>10+ năm</strong>
+                    đồng hành cùng bạn đọc
+                </div>
+            </div>
+
+            <div>
+                <div class="section-tag">Vì sao chọn chúng tôi</div>
+                <h2 class="section-title">Nhà sách được xây dựng bằng tình yêu tri thức</h2>
+                <p style="margin-top: 14px; color: #4A5568; font-size: 15px;">
+                    Trí Tuệ Bookstore bắt đầu từ một góc nhỏ với khao khát mang sách hay, chuẩn bản quyền đến tay mọi
+                    bạn đọc. Chúng tôi không ngừng hoàn thiện dịch vụ đóng gói cẩn thận và giao hàng tận nơi.
+                </p>
+
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div>
+                            <h5 style="font-size:14px; font-weight:700;">Sách chính hãng 100%</h5>
+                            <p style="font-size:12px; color:var(--text-muted);">Bản in giấy chuẩn đẹp, nguồn gốc xuất
+                                bản minh bạch.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feat-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div>
+                            <h5 style="font-size:14px; font-weight:700;">Giao hàng siêu tốc</h5>
+                            <p style="font-size:12px; color:var(--text-muted);">Nhận sách trong 1-3 ngày, bọc chống sốc
+                                từng góc mép.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feat-icon"><i class="fa-solid fa-tag"></i></div>
+                        <div>
+                            <h5 style="font-size:14px; font-weight:700;">Mức giá ưu đãi</h5>
+                            <p style="font-size:12px; color:var(--text-muted);">Chiết khấu tốt kèm quà tặng sổ note,
+                                bookmark xinh xắn.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feat-icon"><i class="fa-solid fa-headset"></i></div>
+                        <div>
+                            <h5 style="font-size:14px; font-weight:700;">Tư vấn tận tâm</h5>
+                            <p style="font-size:12px; color:var(--text-muted);">Hỗ trợ tìm tựa sách đúng chuyên môn và
+                                sở thích đọc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 4. ĐÁNH GIÁ CỦA ĐỘC GIẢ ================= -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <div class="section-tag">Độc giả nói gì</div>
+            <h2 class="section-title">Hàng nghìn độc giả đã tin yêu Trí Tuệ</h2>
+
+            <div class="review-grid">
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="review-text">“Sách ở Trí Tuệ toàn bản in đẹp, giao nhanh mà còn được tặng bookmark và
+                            sổ note xinh xắn. Mình đặt nhiều lần rồi rất hài lòng.”</p>
+                    </div>
+                    <div class="user-info">
+                        <img class="user-avatar"
+                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop"
+                            alt="avatar" />
+                        <div>
+                            <div style="font-size:14px; font-weight:700;">Nguyễn Minh Anh</div>
+                            <div style="font-size:12px; color:var(--text-muted);">Độc giả văn học</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="review-text">“Kho sách phong phú, đặc biệt có cả mục sách tiếng Anh bản gốc rất dễ
+                            tìm. Giá cả lại mềm hơn các hiệu sách bên ngoài.”</p>
+                    </div>
+                    <div class="user-info">
+                        <img class="user-avatar"
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop"
+                            alt="avatar" />
+                        <div>
+                            <div style="font-size:14px; font-weight:700;">Trần Quốc Huy</div>
+                            <div style="font-size:12px; color:var(--text-muted);">Sinh viên kinh tế</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="review-text">“Đóng gói cẩn thận 4 góc không bị quăn mép tí nào. Sách thiếu nhi in
+                            tranh màu đẹp, con mình thích mê!”</p>
+                    </div>
+                    <div class="user-info">
+                        <img class="user-avatar"
+                            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop"
+                            alt="avatar" />
+                        <div>
+                            <div style="font-size:14px; font-weight:700;">Lê Thu Hà</div>
+                            <div style="font-size:12px; color:var(--text-muted);">Phụ huynh</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 5. FOOTER ================= -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <div class="logo-icon" style="width: 32px; height: 32px; font-size: 14px;"><i
+                                class="fa-solid fa-book"></i></div>
+                        <span>Trí Tuệ Bookstore</span>
+                    </div>
+                    <p style="font-size: 13px; color: #A0AEC0; margin-bottom: 16px;">Đem nguồn tri thức bất tận và sách
+                        bản quyền chính hãng đến gần hơn với độc giả Việt Nam.</p>
+                    <div style="margin-bottom:8px; font-size:13px;"><i class="fa-solid fa-location-dot"></i> 128 Lý
+                        Thường Kiệt, Hoàn Kiếm, Hà Nội</div>
+                    <div style="margin-bottom:8px; font-size:13px;"><i class="fa-solid fa-phone"></i> 1900 6868</div>
+                    <div style="font-size:13px;"><i class="fa-solid fa-envelope"></i> hotro@trituebook.vn</div>
+                </div>
+
+                <div>
+                    <h4 style="color:#fff; margin-bottom:14px; font-size:15px;">Về Trí Tuệ</h4>
+                    <ul style="font-size:13px; color:#A0AEC0; line-height:2;">
+                        <li><a href="#about">Giới thiệu</a></li>
+                        <li><a href="#about">Tuyển dụng</a></li>
+                        <li><a href="#about">Tin tức sự kiện</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color:#fff; margin-bottom:14px; font-size:15px;">Hỗ trợ khách hàng</h4>
+                    <ul style="font-size:13px; color:#A0AEC0; line-height:2;">
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Phương thức thanh toán</a></li>
+                        <li><a href="#">Chính sách vận chuyển</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color:#fff; margin-bottom:14px; font-size:15px;">Danh mục nổi bật</h4>
+                    <ul style="font-size:13px; color:#A0AEC0; line-height:2;">
+                        <li><a href="#allBooks">Sách Nước Ngoài</a></li>
+                        <li><a href="#allBooks">Kinh tế & Đầu tư</a></li>
+                        <li><a href="#allBooks">Kỹ năng sống</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color:#fff; margin-bottom:14px; font-size:15px;">Kết nối</h4>
+                    <div style="display:flex; gap:10px; margin-top:8px;">
+                        <a href="#"
+                            style="background:rgba(255,255,255,0.1); width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"
+                            style="background:rgba(255,255,255,0.1); width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#"
+                            style="background:rgba(255,255,255,0.1); width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;"><i
+                                class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                &copy; 2026 Trí Tuệ - Bookstore. Đồ án bài tập lớn Thiết kế Web cơ bản.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= MODAL CHI TIẾT SÁCH (HÌNH 3.5) ================= -->
+    <div class="detail-modal-overlay" id="bookDetailModal">
+        <div class="detail-modal-box">
+            <div class="detail-browser-bar">
+                <span>NHÀ SÁCH TRÍ TUỆ | SÁCH BẢN QUYỀN CHÍNH HÃNG</span>
+                <span>HỖ TRỢ THANH TOÁN COD TOÀN QUỐC</span>
+            </div>
+
+            <button class="close-detail-btn" id="closeDetailBtn">&times;</button>
+
+            <div class="detail-modal-inner">
+                <div class="detail-top-grid">
+                    <div class="detail-img-wrap">
+                        <img id="detailImg" src="" alt="Bìa sách" />
+                    </div>
+
+                    <div class="detail-info-wrap">
+                        <h2 class="detail-title-red" id="detailTitle">Tên Sách</h2>
+                        <div class="detail-price-line" id="detailPrice">0 đ</div>
+
+                        <ul class="detail-spec-list">
+                            <li><strong>Tên Nhà Cung Cấp:</strong> <span id="detailSupplier">CÔNG TY TNHH SÁCH
+                                    VIỆT</span></li>
+                            <li><strong>Tác giả:</strong> <span id="detailAuthor">Tác giả</span></li>
+                            <li><strong>NXB:</strong> <span id="detailPublisher">NXB Trẻ</span></li>
+                            <li><strong>Năm XB:</strong> <span id="detailYear">2023</span></li>
+                            <li><strong>Kích Thước Bao Bì:</strong> <span id="detailSize">21 x 15 x 2.5 cm</span></li>
+                            <li><strong>Số lượng còn trong kho:</strong> <span id="detailStock">70</span></li>
+                        </ul>
+
+                        <div class="gift-box">
+                            <div class="gift-header"><i class="fa-solid fa-gift"></i> QUÀ TẶNG KÈM</div>
+                            <ul>
+                                <li>Tặng <span>Giấy nhớ + Bút Highlight</span> cho đơn hàng từ 499k</li>
+                                <li>Tặng <span>Sổ da cao cấp + Bút ghi chú</span> cho đơn hàng từ 699k</li>
+                                <li>Tặng <span>Sách mini tự chọn</span> cho đơn hàng từ 899k</li>
+                            </ul>
+                        </div>
+
+                        <button class="btn-add-cart-detail" id="detailAddCartBtn">
+                            <i class="fa-solid fa-bag-shopping"></i> THÊM VÀO GIỎ HÀNG
+                        </button>
+                    </div>
+                </div>
+
+                <div class="detail-description-section">
+                    <h4>Mô tả nội dung cuốn sách</h4>
+                    <p id="detailDesc">Nội dung mô tả chi tiết...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL GIỎ HÀNG ================= -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="cart-modal-box">
+            <button class="modal-close" id="closeCartModal">&times;</button>
+            <h2 style="font-family: var(--font-heading); margin-bottom: 8px;">
+                <i class="fa-solid fa-bag-shopping" style="color:var(--primary-orange);"></i> Giỏ hàng của bạn
+            </h2>
+            <p style="font-size: 13px; color: var(--text-muted);">Danh sách các đầu sách bạn đã chọn mua.</p>
+
+            <div style="overflow-x: auto;">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Sách</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="cart-total-bar">
+                <div>
+                    <span style="font-size: 15px; color: #555;">Tổng thanh toán: </span>
+                    <span class="cart-total-price" id="cartTotalPrice">0₫</span>
+                </div>
+                <button class="btn-primary" onclick="checkoutCart()">
+                    <i class="fa-solid fa-credit-card"></i> Tiến hành thanh toán
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL ADMIN (SÁCH / HÓA ĐƠN / KHÁCH HÀNG) ================= -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="admin-modal-box">
+            <button class="modal-close" id="closeAdminModal">&times;</button>
+
+            <div class="admin-top-bar">
+                <h1 class="admin-page-title" id="adminTitleHeading">QUẢN LÝ THÔNG TIN SÁCH</h1>
+                <button class="btn-admin-login-head" onclick="promptAdminLogin()">
+                    <i class="fa-solid fa-user-shield"></i> <span id="adminLoginStateText">Đăng nhập Admin</span>
+                </button>
+            </div>
+
+            <!-- 3 Tab Admin: Sách / Hóa Đơn / Khách Hàng -->
+            <div class="admin-nav-tabs">
+                <button class="admin-nav-tab active" id="tabAdminBook" onclick="switchAdminTab('book')">
+                    <i class="fa-solid fa-book"></i> Quản lý Sách
+                </button>
+                <button class="admin-nav-tab" id="tabAdminOrder" onclick="switchAdminTab('order')">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> Quản lý Hóa Đơn
+                </button>
+                <button class="admin-nav-tab" id="tabAdminCustomer" onclick="switchAdminTab('customer')">
+                    <i class="fa-solid fa-users"></i> Quản lý Khách Hàng
+                </button>
+            </div>
+
+            <!-- Bố cục: Mặc định Full khung, bấm Xem/Sửa/Thêm thì thu lại hiện form bên phải -->
+            <div class="admin-layout-grid" id="adminGridContainer">
+                <!-- Bảng danh sách chính -->
+                <div class="admin-card-panel">
+                    <div class="admin-toolbar">
+                        <button class="btn-admin-add-blue" id="adminAddBtn" onclick="openAdminForm('add')">
+                            + Thêm mới
+                        </button>
+                        <div class="admin-search-wrap">
+                            <input type="text" class="admin-search-input" id="adminSearchInput"
+                                placeholder="Nhập từ khóa tìm..." oninput="handleAdminSearch()" />
+                            <button class="btn-search-gray" onclick="handleAdminSearch()">Tìm kiếm</button>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 16px; margin-bottom: 12px;" id="adminTableHeading">Danh sách sách</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="admin-table-custom">
+                            <thead id="adminThead"></thead>
+                            <tbody id="adminTbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Form bảng phụ bên phải (Mặc định ẩn) -->
+                <div class="admin-card-panel admin-side-form" id="adminSideFormPanel">
+                    <h3 id="sideFormTitle">Thông tin</h3>
+                    <form id="sideForm" onsubmit="handleSideFormSubmit(event)">
+                        <div id="sideFormInputs"></div>
+                        <div style="margin-top: 14px;">
+                            <button type="submit" class="btn-admin-save-green" id="sideFormSaveBtn">Ghi lại</button>
+                            <button type="button" class="btn-admin-cancel-gray" onclick="closeAdminForm()">Đóng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL ĐĂNG NHẬP / ĐĂNG KÝ ================= -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-box">
+            <button class="modal-close" id="closeAuthModal">&times;</button>
+            <div class="modal-tabs">
+                <button class="modal-tab-btn active" id="tabLoginBtn">Đăng nhập</button>
+                <button class="modal-tab-btn" id="tabRegisterBtn">Đăng ký</button>
+            </div>
+
+            <form class="auth-form active" id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email hoặc Tên đăng nhập</label>
+                    <input type="text" id="loginUsername" placeholder="Nhập tên của bạn..." value="Nguyễn Văn A"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" placeholder="Nhập mật khẩu..." value="123456" required />
+                </div>
+                <button type="submit" class="btn-submit-modal">Đăng nhập</button>
+            </form>
+
+            <form class="auth-form" id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>Họ và tên của bạn</label>
+                    <input type="text" id="regName" placeholder="Ví dụ: Hoàng Minh Tuấn" required />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="regEmail" placeholder="name@example.com" required />
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" placeholder="Mật khẩu từ 6 ký tự..." required />
+                </div>
+                <button type="submit" class="btn-submit-modal">Tạo tài khoản mới</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        /* 1. KHO DỮ LIỆU ĐỦ 8 - 10 CUỐN CHO MỖI THỂ LOẠI (CHÍNH TẢ CHUẨN) */
+        const ALL_CATEGORIES = [
+            "Kỹ năng sống", "Kinh tế", "Văn học", "Thiếu nhi", "Lịch sử", "Khoa học", "Sách Nước Ngoài"
+        ];
+
+        const DEFAULT_ORDERS = [
+            { id: "HD001", customer: "Nguyễn Văn A", date: "2026-09-10", total: 320000, status: "Đã thanh toán" },
+            { id: "HD002", customer: "Trần Thị Mai", date: "2026-09-12", total: 450000, status: "Đang giao hàng" },
+            { id: "HD003", customer: "Lê Hoàng Nam", date: "2026-09-13", total: 180000, status: "Chờ xác nhận" },
+            { id: "HD004", customer: "Phạm Hồng Phúc", date: "2026-09-14", total: 560000, status: "Đã thanh toán" }
+        ];
+
+        const DEFAULT_CUSTOMERS = [
+            { id: "KH001", name: "Nguyễn Văn A", email: "vana@gmail.com", phone: "0912345678", role: "Thành viên" },
+            { id: "KH002", name: "Trần Thị Mai", email: "maitt@gmail.com", phone: "0987654321", role: "Khách VIP" },
+            { id: "KH003", name: "Lê Hoàng Nam", email: "namlh@gmail.com", phone: "0905123987", role: "Thành viên" },
+            { id: "KH004", name: "Phạm Hồng Phúc", email: "phucph@gmail.com", phone: "0934112233", role: "Khách VIP" }
+        ];
+
+        // Kho 56 cuốn sách (7 thể loại x 8 cuốn/thể loại)
+        const DEFAULT_BOOKS = [
+            // == 1. KỸ NĂNG SỐNG (8 CUỐN) ==
+            { id: "KN01", title: "Đắc Nhân Tâm", author: "Dale Carnegie", category: "Kỹ năng sống", price: 135000, oldPrice: 180000, rating: 4.9, badge: "Kinh điển", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600", desc: "Nghệ thuật ứng xử, đối nhân xử thế và thu phục lòng người hay nhất mọi thời đại." },
+            { id: "KN02", title: "Quẳng Gánh Lo Đi Và Vui Sống", author: "Dale Carnegie", category: "Kỹ năng sống", price: 120000, oldPrice: 150000, rating: 4.8, badge: "Bán chạy", img: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=600", desc: "Học cách giải phóng tâm trí khỏi lo âu thường nhật để sống an nhiên và hạnh phúc." },
+            { id: "KN03", title: "Tư Duy Ngược", author: "Nguyễn Anh Dũng", category: "Kỹ năng sống", price: 95000, oldPrice: 120000, rating: 4.7, badge: "Gợi ý", img: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=600", desc: "Dám khác biệt để bứt phá tư duy và chạm tới những thành công vượt ngoài giới hạn." },
+            { id: "KN04", title: "Hiểu Về Trái Tim", author: "Minh Niệm", category: "Kỹ năng sống", price: 145000, oldPrice: 185000, rating: 4.9, badge: "Yêu thích", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600", desc: "Tác phẩm soi rọi nội tâm, hàn gắn cảm xúc và thấu hiểu những nỗi niềm sâu thẳm." },
+            { id: "KN05", title: "Kỷ Luật Tự Giác", author: "Brian Tracy", category: "Kỹ năng sống", price: 110000, oldPrice: 135000, rating: 4.8, badge: "Nổi bật", img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=600", desc: "Xây dựng thói quen kiên định và tính kỷ luật thép để chinh phục mọi mục tiêu đề ra." },
+            { id: "KN06", title: "Khéo Ăn Nói Sẽ Có Được Thiên Hạ", author: "Trác Nhã", category: "Kỹ năng sống", price: 105000, oldPrice: 130000, rating: 4.7, badge: "Giao tiếp", img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600", desc: "Kỹ năng giao tiếp tinh tế giúp bạn tự tin làm chủ mọi cuộc trò chuyện và thuyết phục người nghe." },
+            { id: "KN07", title: "Đời Thay Đổi Khi Chúng Ta Thay Đổi", author: "Andrew Matthews", category: "Kỹ năng sống", price: 88000, oldPrice: 110000, rating: 4.8, badge: "Tích cực", img: "https://images.unsplash.com/photo-1495640388908-05fa85288e61?q=80&w=600", desc: "Cách nhìn nhận tích cực về nghịch cảnh để cuộc sống mỗi ngày tràn đầy niềm vui và may mắn." },
+            { id: "KN08", title: "Sức Mạnh Của Hiện Tại", author: "Eckhart Tolle", category: "Kỹ năng sống", price: 130000, oldPrice: 165000, rating: 4.9, badge: "Tâm thức", img: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?q=80&w=600", desc: "Đưa tâm trí trở về giây phút hiện tại để tìm thấy sự tĩnh lặng và an lạc tuyệt đối." },
+
+            // == 2. KINH TẾ & TÀI CHÍNH (8 CUỐN) ==
+            { id: "KT01", title: "Cha Giàu Cha Nghèo", author: "Robert Kiyosaki", category: "Kinh tế", price: 99000, oldPrice: 128000, rating: 4.8, badge: "Bán chạy", img: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=600", desc: "Cuộc cách mạng tư duy tài chính, phân biệt tài sản và tiêu sản để đạt tự do tài chính." },
+            { id: "KT02", title: "Tư Duy Nhanh Và Chậm", author: "Daniel Kahneman", category: "Kinh tế", price: 215000, oldPrice: 280000, rating: 4.7, badge: "Khoa học KT", img: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=600", desc: "Khám phá hai hệ thống tư duy chi phối mọi quyết định và hành vi tài chính con người." },
+            { id: "KT03", title: "Nhà Đầu Tư Thông Minh", author: "Benjamin Graham", category: "Kinh tế", price: 195000, oldPrice: 240000, rating: 4.9, badge: "Kinh điển", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600", desc: "Cuốn sách gối đầu giường của Warren Buffett về phương pháp đầu tư giá trị an toàn." },
+            { id: "KT04", title: "Tâm Lý Học Về Tiền", author: "Morgan Housel", category: "Kinh tế", price: 140000, oldPrice: 175000, rating: 4.9, badge: "Mới", img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=600", desc: "Những bài học bất biến về lòng tham, sự giàu có và hạnh phúc trong cách quản lý tiền bạc." },
+            { id: "KT05", title: "Chiến Lược Đại Dương Xanh", author: "W. Chan Kim", category: "Kinh tế", price: 170000, oldPrice: 210000, rating: 4.8, badge: "Kinh doanh", img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600", desc: "Tạo lập khoảng trống thị trường không có cạnh tranh và làm cho đối thủ trở nên vô nghĩa." },
+            { id: "KT06", title: "Khởi Nghiệp Tinh Gọn", author: "Eric Ries", category: "Kinh tế", price: 155000, oldPrice: 190000, rating: 4.7, badge: "Khởi nghiệp", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600", desc: "Mô hình khởi nghiệp nhanh chóng kiểm chứng sản phẩm với chi phí và rủi ro thấp nhất." },
+            { id: "KT07", title: "Kinh Tế Học Hài Hước", author: "Steven Levitt", category: "Kinh tế", price: 125000, oldPrice: 150000, rating: 4.8, badge: "Độc đáo", img: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=600", desc: "Góc nhìn kinh tế học dí dỏm lý giải những hiện tượng kỳ lạ và thú vị trong đời sống." },
+            { id: "KT08", title: "Người Giàu Có Nhất Thành Babylon", author: "George S. Clason", category: "Kinh tế", price: 78000, oldPrice: 99000, rating: 4.9, badge: "Tiết kiệm", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=600", desc: "Bí quyết quản lý tài chính cổ xưa dạy cách tiết kiệm 1/10 thu nhập và nhân giống đồng tiền." },
+
+            // == 3. VĂN HỌC (8 CUỐN) ==
+            { id: "VH01", title: "Số Đỏ", author: "Vũ Trọng Phụng", category: "Văn học", price: 92000, oldPrice: 115000, rating: 4.8, badge: "Việt Nam", img: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=600", desc: "Bức tranh trào phúng đỉnh cao bóc trần những thói kệch cỡm của xã hội thành thị thời phong kiến." },
+            { id: "VH02", title: "Nhà Giả Kim", author: "Paulo Coelho", category: "Văn học", price: 79000, oldPrice: 99000, rating: 4.9, badge: "Kinh điển", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600", desc: "Hành trình đi tìm kho báu đánh thức ước mơ và đức tin lắng nghe tiếng gọi từ trái tim." },
+            { id: "VH03", title: "Rừng Na Uy", author: "Haruki Murakami", category: "Văn học", price: 125000, oldPrice: 155000, rating: 4.7, badge: "Nhật Bản", img: "https://images.unsplash.com/photo-1495640388908-05fa85288e61?q=80&w=600", desc: "Khúc ca da diết về những nỗi cô đơn sâu thẳm và mất mát tuổi thanh xuân." },
+            { id: "VH04", title: "Trăm Năm Cô Đơn", author: "Gabriel García Márquez", category: "Văn học", price: 165000, oldPrice: 210000, rating: 4.9, badge: "Nobel", img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600", desc: "Tuyệt tác hiện thực huyền ảo về dòng họ Buendía qua bảy thế hệ chìm đắm trong nỗi cô đơn." },
+            { id: "VH05", title: "Mắt Biếc", author: "Nguyễn Nhật Ánh", category: "Văn học", price: 85000, oldPrice: 110000, rating: 4.9, badge: "Tuổi trẻ", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600", desc: "Mối tình đầu trong trẻo, tha thiết nhưng man mác buồn của chàng trai Ngạn dành cho Hà Lan." },
+            { id: "VH06", title: "Cánh Đồng Bất Tận", author: "Nguyễn Ngọc Tư", category: "Văn học", price: 75000, oldPrice: 95000, rating: 4.8, badge: "Đặc sắc", img: "https://images.unsplash.com/photo-1500485035595-cbe6f645feb1?q=80&w=600", desc: "Những phận đời lênh đênh miền sông nước Nam Bộ thấm đượm tình người và nỗi đau nhân thế." },
+            { id: "VH07", title: "Bắt Trẻ Đồng Xanh", author: "J.D. Salinger", category: "Văn học", price: 95000, oldPrice: 120000, rating: 4.7, badge: "Hiện đại", img: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?q=80&w=600", desc: "Cái nhìn nổi loạn và trăn trở của tuổi mới lớn trước sự đạo đức giả của thế giới người lớn." },
+            { id: "VH08", title: "Chiến Tranh Và Hòa Bình", author: "Leo Tolstoy", category: "Văn học", price: 290000, oldPrice: 360000, rating: 4.9, badge: "Sử thi", img: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=600", desc: "Thiên sử thi vĩ đại tái hiện toàn cảnh xã hội Nga và tinh thần quả cảm chống quân xâm lược." },
+
+            // == 4. THIẾU NHI (8 CUỐN) ==
+            { id: "TN01", title: "Hoàng Tử Bé", author: "Antoine de Saint-Exupéry", category: "Thiếu nhi", price: 68000, oldPrice: 85000, rating: 4.9, badge: "Nổi bật", img: "https://images.unsplash.com/photo-1532012164546-f432f2e3edd4?q=80&w=600", desc: "Câu chuyện cổ tích chứa đựng triết lý sâu sắc về tình bạn, tình yêu và lòng trắc ẩn." },
+            { id: "TN02", title: "Dế Mèn Phiêu Lưu Ký", author: "Tô Hoài", category: "Thiếu nhi", price: 60000, oldPrice: 75000, rating: 4.9, badge: "Kinh điển", img: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=600", desc: "Bài học đường đời đầu tiên và khát vọng hòa bình, tình bằng hữu của chàng Dế Mèn dũng cảm." },
+            { id: "TN03", title: "Kính Vạn Hoa", author: "Nguyễn Nhật Ánh", category: "Thiếu nhi", price: 280000, oldPrice: 350000, rating: 4.8, badge: "Tuổi học trò", img: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=600", desc: "Những trò đùa tinh nghịch và kỷ niệm học trò đầy ắp tiếng cười của bộ ba Quý ròm, Tiểu Long, nhỏ Hạnh." },
+            { id: "TN04", title: "Góc Sân Và Khoảng Trời", author: "Trần Đăng Khoa", category: "Thiếu nhi", price: 65000, oldPrice: 80000, rating: 4.8, badge: "Thơ ca", img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=600", desc: "Tập thơ hồn nhiên trong sáng về thiên nhiên làng quê Việt Nam qua đôi mắt trẻ thơ." },
+            { id: "TN05", title: "Chuyện Con Mèo Dạy Hải Âu Bay", author: "Luis Sepúlveda", category: "Thiếu nhi", price: 72000, oldPrice: 90000, rating: 4.9, badge: "Cảm động", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600", desc: "Thông điệp yêu thương loài vật và lòng dũng cảm vượt qua giới hạn của chính mình." },
+            { id: "TN06", title: "Cây Cam Ngọt Của Tôi", author: "José Mauro", category: "Thiếu nhi", price: 98000, oldPrice: 125000, rating: 4.9, badge: "Lấy nước mắt", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600", desc: "Câu chuyện đầy xúc động về tâm hồn nhạy cảm của cậu bé Zezé trong xóm nghèo Brazil." },
+            { id: "TN07", title: "Búp Sen Xanh", author: "Sơn Tùng", category: "Thiếu nhi", price: 85000, oldPrice: 105000, rating: 4.8, badge: "Lịch sử", img: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=600", desc: "Thời niên thiếu giàu lòng yêu nước và ý chí vượt khó của Chủ tịch Hồ Chí Minh." },
+            { id: "TN08", title: "Charlotte Và Khung Cửi", author: "E.B. White", category: "Thiếu nhi", price: 70000, oldPrice: 88000, rating: 4.8, badge: "Ấm áp", img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600", desc: "Tình bạn diệu kỳ giữa chú heo Wilbur và cô nhện thông minh Charlotte nơi nông trại." },
+
+            // == 5. LỊCH SỬ (8 CUỐN) ==
+            { id: "LS01", title: "Sapiens: Lược Sử Loài Người", author: "Yuval Noah Harari", category: "Lịch sử", price: 215000, oldPrice: 280000, rating: 4.9, badge: "Top 1", img: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=600", desc: "Chuyến du hành toàn cảnh từ thuở hồng hoang vượn người đến thời đại công nghệ số." },
+            { id: "LS02", title: "Đại Việt Sử Ký Toàn Thư", author: "Ngô Sĩ Liên", category: "Lịch sử", price: 340000, oldPrice: 420000, rating: 4.9, badge: "Quốc sử", img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600", desc: "Bộ biên niên sử đồ sộ ghi chép các triều đại dựng nước và giữ nước oanh liệt của dân tộc." },
+            { id: "LS03", title: "Súng, Vi Trùng Và Thép", author: "Jared Diamond", category: "Lịch sử", price: 195000, oldPrice: 245000, rating: 4.8, badge: "Pulitzer", img: "https://images.unsplash.com/photo-1447069387593-a5de0862481e?q=80&w=600", desc: "Lý giải nguồn gốc địa lý và môi trường tạo nên sự phát triển bất bình đẳng của các nền văn minh." },
+            { id: "LS04", title: "Việt Nam Sử Lược", author: "Trần Trọng Kim", category: "Lịch sử", price: 135000, oldPrice: 170000, rating: 4.8, badge: "Sử Việt", img: "https://images.unsplash.com/photo-1495640388908-05fa85288e61?q=80&w=600", desc: "Cuốn sách nhập môn lịch sử Việt Nam hệ thống mạch lạc, ngôn văn trong sáng dễ hiểu." },
+            { id: "LS05", title: "Con Đường Tơ Lụa", author: "Peter Frankopan", category: "Lịch sử", price: 230000, oldPrice: 290000, rating: 4.9, badge: "Toàn cầu", img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600", desc: "Bức tranh lịch sử thế giới nhìn từ trục giao thương kết nối phương Đông và phương Tây." },
+            { id: "LS06", title: "Sử Việt - 12 Khúc Tráng Ca", author: "Dũng Phan", category: "Lịch sử", price: 115000, oldPrice: 145000, rating: 4.8, badge: "Truyền cảm hứng", img: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=600", desc: "Mười hai lát cắt hào hùng khơi dậy lòng tự hào dân tộc qua những trang sử anh hùng." },
+            { id: "LS07", title: "Lịch Sử Văn Minh Thế Giới", author: "Will Durant", category: "Lịch sử", price: 260000, oldPrice: 320000, rating: 4.8, badge: "Bác học", img: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?q=80&w=600", desc: "Công trình nghiên cứu đồ sộ về triết học, nghệ thuật và văn minh loài người." },
+            { id: "LS08", title: "Vua Gia Long Và Người Pháp", author: "Thụy Khuê", category: "Lịch sử", price: 145000, oldPrice: 180000, rating: 4.7, badge: "Khảo cứu", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600", desc: "Tư liệu nghiên cứu lịch sử chân xác về giai đoạn chuyển giao thời kỳ Nguyễn sơ." },
+
+            // == 6. KHOA HỌC (8 CUỐN) ==
+            { id: "KH01", title: "Vũ Trụ Trong Vỏ Hạt Dẻ", author: "Stephen Hawking", category: "Khoa học", price: 165000, oldPrice: 195000, rating: 4.8, badge: "Vật lý", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600", desc: "Bí ẩn thuyết tương đối, cơ học lượng tử, lỗ đen và cấu trúc không - thời gian nhiều chiều." },
+            { id: "KH02", title: "Vũ Trụ (Cosmos)", author: "Carl Sagan", category: "Khoa học", price: 210000, oldPrice: 260000, rating: 4.9, badge: "Thiên văn", img: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=600", desc: "Chuyến du hành 15 tỷ năm khám phá quá trình tiến hóa kỳ vĩ của không gian vũ trụ." },
+            { id: "KH03", title: "Gen: Lịch Sử Và Tương Lai", author: "Siddhartha Mukherjee", category: "Khoa học", price: 235000, oldPrice: 295000, rating: 4.8, badge: "Sinh học", img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=600", desc: "Bức tranh toàn cảnh ngành di truyền học từ thí nghiệm đậu Hà Lan tới chỉnh sửa gen CRISPR." },
+            { id: "KH04", title: "Nguồn Gốc Các Loài", author: "Charles Darwin", category: "Khoa học", price: 180000, oldPrice: 225000, rating: 4.9, badge: "Kinh điển", img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=600", desc: "Thuyết tiến hóa chọn lọc tự nhiên làm thay đổi vĩnh viễn nền sinh học nhân loại." },
+            { id: "KH05", title: "Bản Thiết Kế Vĩ Đại", author: "Stephen Hawking", category: "Khoa học", price: 140000, oldPrice: 175000, rating: 4.7, badge: "Vũ trụ luận", img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600", desc: "Những giả thuyết đột phá trả lời câu hỏi: Vũ trụ từ đâu ra và vì sao ta tồn tại?" },
+            { id: "KH06", title: "Hơi Thở Cuối Cùng", author: "Paul Kalanithi", category: "Khoa học", price: 110000, oldPrice: 135000, rating: 4.9, badge: "Y học", img: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=600", desc: "Tự truyện của một bác sĩ phẫu thuật thần kinh đối diện ranh giới sinh tử của ung thư." },
+            { id: "KH07", title: "Thế Giới Như Tôi Thấy", author: "Albert Einstein", category: "Khoa học", price: 95000, oldPrice: 120000, rating: 4.8, badge: "Triết học KH", img: "https://images.unsplash.com/photo-1447069387593-a5de0862481e?q=80&w=600", desc: "Góc nhìn sâu sắc của thiên tài Einstein về hòa bình, tôn giáo và sứ mệnh khoa học." },
+            { id: "KH08", title: "Vật Lý Thiên Văn Dành Cho Người Vội Vã", author: "Neil deGrasse Tyson", category: "Khoa học", price: 85000, oldPrice: 105000, rating: 4.8, badge: "Dễ đọc", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600", desc: "Tóm gọn những khái niệm thiên văn học phức tạp bằng ngôn từ hóm hỉnh, dễ hiểu." },
+
+            // == 7. SÁCH NƯỚC NGOÀI (8 CUỐN BẢN GỐC TIẾNG ANH) ==
+            { id: "NN01", title: "Atomic Habits", author: "James Clear", category: "Sách Nước Ngoài", price: 260000, oldPrice: 320000, rating: 4.9, badge: "English", img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600", desc: "An easy & proven way to build good habits & break bad ones with tiny daily changes." },
+            { id: "NN02", title: "The Psychology of Money", author: "Morgan Housel", category: "Sách Nước Ngoài", price: 240000, oldPrice: 295000, rating: 4.9, badge: "English", img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=600", desc: "Timeless lessons on wealth, greed, and happiness in financial decision making." },
+            { id: "NN03", title: "The Alchemist", author: "Paulo Coelho", category: "Sách Nước Ngoài", price: 185000, oldPrice: 220000, rating: 4.8, badge: "English", img: "https://images.unsplash.com/photo-1495640388908-05fa85288e61?q=80&w=600", desc: "The inspiring journey of Santiago pursuing his Personal Legend across the desert." },
+            { id: "NN04", title: "A Brief History of Time", author: "Stephen Hawking", category: "Sách Nước Ngoài", price: 275000, oldPrice: 340000, rating: 4.8, badge: "English", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600", desc: "From the Big Bang to Black Holes, exploring the cosmic structure of space and time." },
+            { id: "NN05", title: "Thinking, Fast and Slow", author: "Daniel Kahneman", category: "Sách Nước Ngoài", price: 290000, oldPrice: 350000, rating: 4.7, badge: "English", img: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=600", desc: "Groundbreaking tour of the mind explaining the two systems that drive how we think." },
+            { id: "NN06", title: "To Kill a Mockingbird", author: "Harper Lee", category: "Sách Nước Ngoài", price: 195000, oldPrice: 230000, rating: 4.9, badge: "Classic", img: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=600", desc: "The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience." },
+            { id: "NN07", title: "1984 (George Orwell)", author: "George Orwell", category: "Sách Nước Ngoài", price: 175000, oldPrice: 210000, rating: 4.8, badge: "Dystopian", img: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?q=80&w=600", desc: "The haunting prophetic masterpiece about totalitarianism, surveillance, and freedom." },
+            { id: "NN08", title: "The Great Gatsby", author: "F. Scott Fitzgerald", category: "Sách Nước Ngoài", price: 160000, oldPrice: 190000, rating: 4.7, badge: "Classic", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600", desc: "A portrait of the Jazz Age in all its decadence, excess, and shattered illusions." }
+        ];
+
+        /* Tải dữ liệu từ LocalStorage */
+        let booksData = JSON.parse(localStorage.getItem('tritue_books')) || DEFAULT_BOOKS;
+        let ordersData = JSON.parse(localStorage.getItem('tritue_orders')) || DEFAULT_ORDERS;
+        let customersData = JSON.parse(localStorage.getItem('tritue_customers')) || DEFAULT_CUSTOMERS;
+        let cartData = JSON.parse(localStorage.getItem('tritue_cart')) || [];
+        let currentFilter = 'all';
+
+        function saveAllStorage() {
+            localStorage.setItem('tritue_books', JSON.stringify(booksData));
+            localStorage.setItem('tritue_orders', JSON.stringify(ordersData));
+            localStorage.setItem('tritue_customers', JSON.stringify(customersData));
+            localStorage.setItem('tritue_cart', JSON.stringify(cartData));
+        }
+
+        /* 2. HIỆU ỨNG CUỘN HEADER TRẮNG SÁNG KHI KÉO */
+        const mainHeader = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                mainHeader.classList.add('scrolled');
+            } else {
+                mainHeader.classList.remove('scrolled');
+            }
+        });
+
+        /* 3. TẠO THẺ SÁCH CHUẨN HTML */
+        function createBookCard(b) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.onclick = () => openDetail(b.id);
+            card.innerHTML = `
+        <div class="product-thumb">
+          ${b.badge ? `<span class="badge-top-left">${b.badge}</span>` : ''}
+          <span class="badge-top-right">${b.category}</span>
+          <img src="${b.img}" alt="${b.title}" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600'" />
+        </div>
+        <div class="product-info">
+          <span class="prod-cat">${b.category}</span>
+          <h4 class="prod-title">${b.title}</h4>
+          <div class="prod-author">${b.author}</div>
+          <div class="prod-rating"><i class="fa-solid fa-star"></i> ${b.rating} <span>(450)</span></div>
+          <div class="prod-bottom">
+            <div class="prod-price">
+              <span class="price-current">${b.price.toLocaleString('vi-VN')}₫</span>
+              ${b.oldPrice ? `<span class="price-old">${b.oldPrice.toLocaleString('vi-VN')}₫</span>` : ''}
+            </div>
+            <button class="btn-buy-icon" title="Thêm vào giỏ" onclick="event.stopPropagation(); addToCart('${b.id}');">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </div>
+      `;
+            return card;
+        }
+
+        /* 4. RENDER NEW RELEASE & KHO SÁCH CHÍNH */
+        function renderApp() {
+            // 1. New Release (4 cuốn mới nhất)
+            const nrGrid = document.getElementById('newReleaseGrid');
+            nrGrid.innerHTML = '';
+            const newReleaseBooks = booksData.slice(0, 4);
+            newReleaseBooks.forEach(b => nrGrid.appendChild(createBookCard(b)));
+
+            // 2. Kho sách theo bộ lọc
+            const mainGrid = document.getElementById('mainBookGrid');
+            mainGrid.innerHTML = '';
+            const filtered = currentFilter === 'all'
+                ? booksData
+                : booksData.filter(b => b.category.toLowerCase() === currentFilter.toLowerCase());
+
+            filtered.forEach(b => mainGrid.appendChild(createBookCard(b)));
+
+            // Cập nhật số thống kê Banner
+            document.getElementById('statBookCount').textContent = booksData.length + "+";
+        }
+
+        function filterCategory(cat, btn) {
+            currentFilter = cat;
+            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderApp();
+        }
+
+        /* 5. CHI TIẾT SÁCH (HÌNH 3.5) */
+        const detailModal = document.getElementById('bookDetailModal');
+        let activeBookId = null;
+
+        function openDetail(id) {
+            const book = booksData.find(b => b.id === id);
+            if (!book) return;
+            activeBookId = id;
+
+            document.getElementById('detailImg').src = book.img;
+            document.getElementById('detailTitle').textContent = book.title;
+            document.getElementById('detailPrice').textContent = book.price.toLocaleString('vi-VN') + " đ";
+            document.getElementById('detailAuthor').textContent = book.author;
+            document.getElementById('detailSupplier').textContent = "CÔNG TY TNHH SÁCH VIỆT";
+            document.getElementById('detailPublisher').textContent = "NXB Trí Tuệ";
+            document.getElementById('detailYear').textContent = "2023";
+            document.getElementById('detailSize').textContent = "21 x 15 x 2.5 cm";
+            document.getElementById('detailStock').textContent = "85";
+            document.getElementById('detailDesc').textContent = book.desc || "Đang cập nhật nội dung.";
+
+            detailModal.classList.add('active');
+        }
+
+        document.getElementById('closeDetailBtn').onclick = () => detailModal.classList.remove('active');
+        detailModal.onclick = (e) => { if (e.target === detailModal) detailModal.classList.remove('active'); };
+        document.getElementById('detailAddCartBtn').onclick = () => {
+            if (activeBookId) addToCart(activeBookId);
+        };
+
+        /* 6. GIỎ HÀNG */
+        const cartModal = document.getElementById('cartModal');
+        const openCartBtn = document.getElementById('openCartBtn');
+        const closeCartBtn = document.getElementById('closeCartModal');
+        const cartTableBody = document.getElementById('cartTableBody');
+        const cartTotalPrice = document.getElementById('cartTotalPrice');
+        const cartBadge = document.getElementById('cartCount');
+
+        function updateCartUI() {
+            const totalQty = cartData.reduce((sum, item) => sum + item.qty, 0);
+            cartBadge.textContent = totalQty;
+        }
+
+        function addToCart(bookId) {
+            const b = booksData.find(item => item.id === bookId);
+            if (!b) return;
+
+            const exist = cartData.find(i => i.id === bookId);
+            if (exist) {
+                exist.qty += 1;
+            } else {
+                cartData.push({ id: b.id, title: b.title, price: b.price, img: b.img, qty: 1 });
+            }
+            saveAllStorage();
+            updateCartUI();
+            alert(`Đã thêm "${b.title}" vào giỏ hàng!`);
+        }
+
+        function renderCartTable() {
+            cartTableBody.innerHTML = '';
+            if (cartData.length === 0) {
+                cartTableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:30px; color:#888;">Giỏ hàng của bạn đang trống.</td></tr>`;
+                cartTotalPrice.textContent = "0₫";
+                return;
+            }
+
+            let total = 0;
+            cartData.forEach(item => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+          <td style="display:flex; align-items:center; gap:10px;">
+            <img src="${item.img}" style="width:40px; height:50px; object-fit:cover; border-radius:4px;" />
+            <strong>${item.title}</strong>
+          </td>
+          <td>${item.price.toLocaleString('vi-VN')}₫</td>
+          <td>
+            <button class="cart-qty-btn" onclick="changeQty('${item.id}', -1)">-</button>
+            <span style="margin: 0 8px; font-weight:600;">${item.qty}</span>
+            <button class="cart-qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+          </td>
+          <td style="color:#d90429; font-weight:700;">${itemTotal.toLocaleString('vi-VN')}₫</td>
+          <td>
+            <button style="background:none; border:none; color:#ef4444; cursor:pointer; font-weight:600;" onclick="removeCart('${item.id}')">
+              <i class="fa-solid fa-trash"></i> Xóa
+            </button>
+          </td>
+        `;
+                cartTableBody.appendChild(tr);
+            });
+            cartTotalPrice.textContent = total.toLocaleString('vi-VN') + "₫";
+        }
+
+        function changeQty(id, d) {
+            const item = cartData.find(i => i.id === id);
+            if (!item) return;
+            item.qty += d;
+            if (item.qty <= 0) cartData = cartData.filter(i => i.id !== id);
+            saveAllStorage();
+            updateCartUI();
+            renderCartTable();
+        }
+
+        function removeCart(id) {
+            cartData = cartData.filter(i => i.id !== id);
+            saveAllStorage();
+            updateCartUI();
+            renderCartTable();
+        }
+
+        function checkoutCart() {
+            if (cartData.length === 0) return alert("Giỏ hàng đang trống!");
+            // Tự động tạo một Hóa Đơn mới vào danh sách Admin
+            const newOrder = {
+                id: "HD" + Math.floor(100 + Math.random() * 900),
+                customer: document.getElementById('userDisplayName').textContent || "Nguyễn Văn A",
+                date: new Date().toISOString().split('T')[0],
+                total: cartData.reduce((sum, i) => sum + i.price * i.qty, 0),
+                status: "Chờ xác nhận"
+            };
+            ordersData.unshift(newOrder);
+
+            alert("Đặt hàng thành công! Hóa đơn của bạn đã được gửi tới hệ thống quản lý.");
+            cartData = [];
+            saveAllStorage();
+            updateCartUI();
+            renderCartTable();
+            cartModal.classList.remove('active');
+        }
+
+        openCartBtn.onclick = () => { renderCartTable(); cartModal.classList.add('active'); };
+        closeCartBtn.onclick = () => cartModal.classList.remove('active');
+        cartModal.onclick = (e) => { if (e.target === cartModal) cartModal.classList.remove('active'); };
+
+        /* 7. ADMIN (SÁCH / HÓA ĐƠN / KHÁCH HÀNG - THU GỌN KHI MỞ BẢNG PHỤ) */
+        const adminModal = document.getElementById('adminModal');
+        const openAdminBtn = document.getElementById('openAdminModal');
+        const closeAdminBtn = document.getElementById('closeAdminModal');
+        const adminGridContainer = document.getElementById('adminGridContainer');
+        const adminThead = document.getElementById('adminThead');
+        const adminTbody = document.getElementById('adminTbody');
+        const sideFormPanel = document.getElementById('adminSideFormPanel');
+        const sideFormTitle = document.getElementById('sideFormTitle');
+        const sideFormInputs = document.getElementById('sideFormInputs');
+        const adminSearchInput = document.getElementById('adminSearchInput');
+
+        let currentAdminTab = 'book'; // 'book', 'order', 'customer'
+        let currentAdminMode = 'add';
+        let currentEditingId = null;
+
+        openAdminBtn.onclick = () => { adminModal.classList.add('active'); switchAdminTab('book'); };
+        closeAdminBtn.onclick = () => adminModal.classList.remove('active');
+        adminModal.onclick = (e) => { if (e.target === adminModal) adminModal.classList.remove('active'); };
+
+        function promptAdminLogin() {
+            const u = prompt("Nhập tài khoản quản trị:", "admin");
+            if (u) {
+                document.getElementById('adminLoginStateText').textContent = "Admin: " + u;
+                alert("Đăng nhập Admin thành công!");
+            }
+        }
+
+        function switchAdminTab(tab) {
+            currentAdminTab = tab;
+            closeAdminForm();
+            adminSearchInput.value = '';
+
+            document.querySelectorAll('.admin-nav-tab').forEach(t => t.classList.remove('active'));
+
+            if (tab === 'book') {
+                document.getElementById('tabAdminBook').classList.add('active');
+                document.getElementById('adminTitleHeading').textContent = "QUẢN LÝ THÔNG TIN SÁCH";
+                document.getElementById('adminTableHeading').textContent = "Danh sách sách";
+                renderAdminBookTable(booksData);
+            } else if (tab === 'order') {
+                document.getElementById('tabAdminOrder').classList.add('active');
+                document.getElementById('adminTitleHeading').textContent = "QUẢN LÝ THÔNG TIN HÓA ĐƠN";
+                document.getElementById('adminTableHeading').textContent = "Danh sách hóa đơn khách hàng";
+                renderAdminOrderTable(ordersData);
+            } else {
+                document.getElementById('tabAdminCustomer').classList.add('active');
+                document.getElementById('adminTitleHeading').textContent = "QUẢN LÝ THÔNG TIN KHÁCH HÀNG";
+                document.getElementById('adminTableHeading').textContent = "Danh sách khách hàng";
+                renderAdminCustomerTable(customersData);
+            }
+        }
+
+        // Bảng Sách
+        function renderAdminBookTable(data) {
+            adminThead.innerHTML = `
+        <tr>
+          <th style="width:40px;">STT</th>
+          <th>Mã sách</th>
+          <th>Tên sách</th>
+          <th>Thể loại</th>
+          <th>Giá (đ)</th>
+          <th style="width:140px;">Hành động</th>
+        </tr>
+      `;
+            adminTbody.innerHTML = '';
+            data.forEach((b, idx) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td><strong>${b.id}</strong></td>
+          <td>${b.title}</td>
+          <td>${b.category}</td>
+          <td>${b.price.toLocaleString('vi-VN')}</td>
+          <td>
+            <div class="action-btn-group">
+              <button class="btn-act-view" onclick="openAdminForm('view', '${b.id}')">Xem</button>
+              <button class="btn-act-edit" onclick="openAdminForm('edit', '${b.id}')">Sửa</button>
+              <button class="btn-act-del" onclick="deleteItem('${b.id}')">Xóa</button>
+            </div>
+          </td>
+        `;
+                adminTbody.appendChild(tr);
+            });
+        }
+
+        // Bảng Hóa Đơn
+        function renderAdminOrderTable(data) {
+            adminThead.innerHTML = `
+        <tr>
+          <th style="width:40px;">STT</th>
+          <th>Mã HĐ</th>
+          <th>Khách hàng</th>
+          <th>Ngày tạo</th>
+          <th>Tổng tiền (đ)</th>
+          <th>Trạng thái</th>
+          <th style="width:140px;">Hành động</th>
+        </tr>
+      `;
+            adminTbody.innerHTML = '';
+            data.forEach((o, idx) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td><strong>${o.id}</strong></td>
+          <td>${o.customer}</td>
+          <td>${o.date}</td>
+          <td>${o.total.toLocaleString('vi-VN')}</td>
+          <td><span style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-weight:600;">${o.status}</span></td>
+          <td>
+            <div class="action-btn-group">
+              <button class="btn-act-view" onclick="openAdminForm('view', '${o.id}')">Xem</button>
+              <button class="btn-act-edit" onclick="openAdminForm('edit', '${o.id}')">Sửa</button>
+              <button class="btn-act-del" onclick="deleteItem('${o.id}')">Xóa</button>
+            </div>
+          </td>
+        `;
+                adminTbody.appendChild(tr);
+            });
+        }
+
+        // Bảng Khách Hàng
+        function renderAdminCustomerTable(data) {
+            adminThead.innerHTML = `
+        <tr>
+          <th style="width:40px;">STT</th>
+          <th>Mã KH</th>
+          <th>Họ tên</th>
+          <th>Email</th>
+          <th>Số ĐT</th>
+          <th>Vai trò</th>
+          <th style="width:140px;">Hành động</th>
+        </tr>
+      `;
+            adminTbody.innerHTML = '';
+            data.forEach((c, idx) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td><strong>${c.id}</strong></td>
+          <td>${c.name}</td>
+          <td>${c.email}</td>
+          <td>${c.phone}</td>
+          <td><span style="background:#dcfce7; color:#15803d; padding:2px 8px; border-radius:4px; font-weight:600;">${c.role}</span></td>
+          <td>
+            <div class="action-btn-group">
+              <button class="btn-act-view" onclick="openAdminForm('view', '${c.id}')">Xem</button>
+              <button class="btn-act-edit" onclick="openAdminForm('edit', '${c.id}')">Sửa</button>
+              <button class="btn-act-del" onclick="deleteItem('${c.id}')">Xóa</button>
+            </div>
+          </td>
+        `;
+                adminTbody.appendChild(tr);
+            });
+        }
+
+        // MỞ BẢNG PHỤ -> THU GỌN KHUNG LẠI
+        function openAdminForm(mode, id = null) {
+            currentAdminMode = mode;
+            currentEditingId = id;
+            adminGridContainer.classList.add('split-active');
+            sideFormPanel.classList.add('active');
+
+            const isReadOnly = mode === 'view';
+            document.getElementById('sideFormSaveBtn').style.display = isReadOnly ? 'none' : 'inline-block';
+
+            if (currentAdminTab === 'book') {
+                sideFormTitle.textContent = mode === 'add' ? 'Thêm mới sách' : (mode === 'edit' ? 'Sửa thông tin sách' : 'Xem thông tin sách');
+                const book = (mode !== 'add' && id) ? booksData.find(b => b.id === id) : {
+                    id: "BK" + Math.floor(100 + Math.random() * 900),
+                    title: "", author: "", category: "Kỹ năng sống", price: 120000,
+                    img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600", desc: ""
+                };
+
+                const catOpts = ALL_CATEGORIES.map(c => `<option value="${c}" ${c === book.category ? 'selected' : ''}>${c}</option>`).join('');
+
+                sideFormInputs.innerHTML = `
+          <div class="admin-form-row"><label>Mã sách</label><input type="text" id="fbId" value="${book.id}" ${mode !== 'add' ? 'readonly' : ''} required /></div>
+          <div class="admin-form-row"><label>Tên sách</label><input type="text" id="fbTitle" value="${book.title}" ${isReadOnly ? 'disabled' : ''} required /></div>
+          <div class="admin-form-row"><label>Tác giả</label><input type="text" id="fbAuthor" value="${book.author}" ${isReadOnly ? 'disabled' : ''} required /></div>
+          <div class="admin-form-row"><label>Thể loại</label><select id="fbCat" ${isReadOnly ? 'disabled' : ''}>${catOpts}</select></div>
+          <div class="admin-form-row"><label>Giá (đ)</label><input type="number" id="fbPrice" value="${book.price}" ${isReadOnly ? 'disabled' : ''} required /></div>
+          <div class="admin-form-row"><label>Link ảnh</label><input type="url" id="fbImg" value="${book.img}" ${isReadOnly ? 'disabled' : ''} /></div>
+          <div class="admin-form-row"><label>Mô tả</label><textarea id="fbDesc" rows="3" ${isReadOnly ? 'disabled' : ''}>${book.desc || ''}</textarea></div>
+        `;
+            } else if (currentAdminTab === 'order') {
+                sideFormTitle.textContent = mode === 'add' ? 'Tạo hóa đơn' : (mode === 'edit' ? 'Cập nhật hóa đơn' : 'Chi tiết hóa đơn');
+                const order = (mode !== 'add' && id) ? ordersData.find(o => o.id === id) : {
+                    id: "HD" + Math.floor(100 + Math.random() * 900), customer: "", date: new Date().toISOString().split('T')[0], total: 200000, status: "Chờ xác nhận"
+                };
+                sideFormInputs.innerHTML = `
+          <div class="admin-form-row"><label>Mã HĐ</label><input type="text" id="foId" value="${order.id}" ${mode !== 'add' ? 'readonly' : ''} required /></div>
+          <div class="admin-form-row"><label>Khách hàng</label><input type="text" id="foCust" value="${order.customer}" ${isReadOnly ? 'disabled' : ''} required /></div>
+          <div class="admin-form-row"><label>Ngày tạo</label><input type="date" id="foDate" value="${order.date}" ${isReadOnly ? 'disabled' : ''} required /></div>
+          <div class="admin-form-row"><label>Tổng tiền</label><input type="number" id="foTotal" value="${order.total}" ${isReadOnly ? 'disabled' : ''} required /></div>
+          <div class="admin-form-row"><label>Trạng thái</label>
+            <select id="foStatus" ${isReadOnly ? 'disabled' : ''}>
+              <option value="Chờ xác nhận" ${order.status === 'Chờ xác nhận' ? 'selected' : ''}>Chờ xác nhận</option>
+              <option value="Đang giao hàng" ${order.status === 'Đang giao hàng' ? 'selected' : ''}>Đang giao hàng</option>
+              <option value="Đã thanh toán" ${order.status === 'Đã thanh toán' ? 'selected' : ''}>Đã thanh toán</option>
+            </select>
+          </div>
+        `;
+            } else {
+                sideFormTitle.textContent = mode === 'add' ? 'Thêm khách hàng' : (mode === 'edit' ? 'Sửa khách hàng' : 'Chi tiết khách hàng');
+                const cust = (mode !== 'add' && id) ? customersData.find(c => c.id === id) : {
+                    id: "KH" + Math.floor(100 + Math.random() * 900), name: "", email: "", phone: "", role: "Thành viên"
+                };
+                sideFormInputs.innerHTML = `
+          <div class="admin-form-row"><label>Mã KH</label><input type="text" id="fcId" value="${cust.id}" ${mode !== 'add' ? 'readonly' : ''} required /></div>
+          <div class="admin-form-row"><label>Họ tên</label><input type="text" id="fcName" value="${cust.name}" ${isReadOnly ? 'disabled' : ''} required /></div>
+          <div class="admin-form-row"><label>Email</label><input type="email" id="fcEmail" value="${cust.email}" ${isReadOnly ? 'disabled' : ''} required /></div>
+          <div class="admin-form-row"><label>Số ĐT</label><input type="text" id="fcPhone" value="${cust.phone}" ${isReadOnly ? 'disabled' : ''} required /></div>
+          <div class="admin-form-row"><label>Vai trò</label>
+            <select id="fcRole" ${isReadOnly ? 'disabled' : ''}>
+              <option value="Thành viên" ${cust.role === 'Thành viên' ? 'selected' : ''}>Thành viên</option>
+              <option value="Khách VIP" ${cust.role === 'Khách VIP' ? 'selected' : ''}>Khách VIP</option>
+            </select>
+          </div>
+        `;
+            }
+        }
+
+        function closeAdminForm() {
+            adminGridContainer.classList.remove('split-active');
+            sideFormPanel.classList.remove('active');
+        }
+
+        function handleSideFormSubmit(e) {
+            e.preventDefault();
+            if (currentAdminTab === 'book') {
+                const id = document.getElementById('fbId').value.trim();
+                const title = document.getElementById('fbTitle').value.trim();
+                const author = document.getElementById('fbAuthor').value.trim();
+                const category = document.getElementById('fbCat').value;
+                const price = parseInt(document.getElementById('fbPrice').value) || 0;
+                const img = document.getElementById('fbImg').value.trim() || 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600';
+                const desc = document.getElementById('fbDesc').value.trim();
+
+                if (currentAdminMode === 'add') {
+                    if (booksData.some(b => b.id === id)) return alert("Mã sách đã tồn tại!");
+                    booksData.unshift({ id, title, author, category, price, oldPrice: null, rating: 5.0, badge: "Mới", img, desc });
+                } else if (currentAdminMode === 'edit') {
+                    const idx = booksData.findIndex(b => b.id === currentEditingId);
+                    if (idx !== -1) booksData[idx] = { ...booksData[idx], title, author, category, price, img, desc };
+                }
+                renderAdminBookTable(booksData);
+            } else if (currentAdminTab === 'order') {
+                const id = document.getElementById('foId').value.trim();
+                const customer = document.getElementById('foCust').value.trim();
+                const date = document.getElementById('foDate').value;
+                const total = parseInt(document.getElementById('foTotal').value) || 0;
+                const status = document.getElementById('foStatus').value;
+
+                if (currentAdminMode === 'add') {
+                    if (ordersData.some(o => o.id === id)) return alert("Mã hóa đơn đã tồn tại!");
+                    ordersData.unshift({ id, customer, date, total, status });
+                } else if (currentAdminMode === 'edit') {
+                    const idx = ordersData.findIndex(o => o.id === currentEditingId);
+                    if (idx !== -1) ordersData[idx] = { ...ordersData[idx], customer, date, total, status };
+                }
+                renderAdminOrderTable(ordersData);
+            } else {
+                const id = document.getElementById('fcId').value.trim();
+                const name = document.getElementById('fcName').value.trim();
+                const email = document.getElementById('fcEmail').value.trim();
+                const phone = document.getElementById('fcPhone').value.trim();
+                const role = document.getElementById('fcRole').value;
+
+                if (currentAdminMode === 'add') {
+                    if (customersData.some(c => c.id === id)) return alert("Mã KH đã tồn tại!");
+                    customersData.push({ id, name, email, phone, role });
+                } else if (currentAdminMode === 'edit') {
+                    const idx = customersData.findIndex(c => c.id === currentEditingId);
+                    if (idx !== -1) customersData[idx] = { ...customersData[idx], name, email, phone, role };
+                }
+                renderAdminCustomerTable(customersData);
+            }
+
+            saveAllStorage();
+            renderApp();
+            closeAdminForm();
+            alert("Đã ghi lại thông tin thành công!");
+        }
+
+        function deleteItem(id) {
+            if (!confirm("Bạn có chắc chắn muốn xóa bản ghi này?")) return;
+            if (currentAdminTab === 'book') {
+                booksData = booksData.filter(b => b.id !== id);
+                renderAdminBookTable(booksData);
+            } else if (currentAdminTab === 'order') {
+                ordersData = ordersData.filter(o => o.id !== id);
+                renderAdminOrderTable(ordersData);
+            } else {
+                customersData = customersData.filter(c => c.id !== id);
+                renderAdminCustomerTable(customersData);
+            }
+            saveAllStorage();
+            renderApp();
+            closeAdminForm();
+        }
+
+        function handleAdminSearch() {
+            const q = adminSearchInput.value.trim().toLowerCase();
+            if (currentAdminTab === 'book') {
+                renderAdminBookTable(booksData.filter(b => b.title.toLowerCase().includes(q) || b.id.toLowerCase().includes(q)));
+            } else if (currentAdminTab === 'order') {
+                renderAdminOrderTable(ordersData.filter(o => o.customer.toLowerCase().includes(q) || o.id.toLowerCase().includes(q)));
+            } else {
+                renderAdminCustomerTable(customersData.filter(c => c.name.toLowerCase().includes(q) || c.email.toLowerCase().includes(q)));
+            }
+        }
+
+        /* 8. ĐĂNG KÝ / ĐĂNG NHẬP */
+        const authModal = document.getElementById('authModal');
+        const closeAuthBtn = document.getElementById('closeAuthModal');
+        const tabLoginBtn = document.getElementById('tabLoginBtn');
+        const tabRegisterBtn = document.getElementById('tabRegisterBtn');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const navLoginBtn = document.getElementById('navLoginBtn');
+        const navRegisterBtn = document.getElementById('navRegisterBtn');
+        const heroRegisterBtn = document.getElementById('heroRegisterBtn');
+        const userProfile = document.getElementById('userProfile');
+        const userDisplayName = document.getElementById('userDisplayName');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        function openAuthTab(tab) {
+            authModal.classList.add('active');
+            if (tab === 'login') {
+                tabLoginBtn.classList.add('active'); tabRegisterBtn.classList.remove('active');
+                loginForm.classList.add('active'); registerForm.classList.remove('active');
+            } else {
+                tabRegisterBtn.classList.add('active'); tabLoginBtn.classList.remove('active');
+                registerForm.classList.add('active'); loginForm.classList.remove('active');
+            }
+        }
+
+        navLoginBtn.onclick = () => openAuthTab('login');
+        navRegisterBtn.onclick = () => openAuthTab('register');
+        heroRegisterBtn.onclick = () => openAuthTab('register');
+        tabLoginBtn.onclick = () => openAuthTab('login');
+        tabRegisterBtn.onclick = () => openAuthTab('register');
+
+        closeAuthBtn.onclick = () => authModal.classList.remove('active');
+        authModal.onclick = (e) => { if (e.target === authModal) authModal.classList.remove('active'); };
+
+        function loginSuccess(name) {
+            authModal.classList.remove('active');
+            navLoginBtn.style.display = 'none';
+            navRegisterBtn.style.display = 'none';
+            userProfile.style.display = 'inline-block';
+            userDisplayName.textContent = name;
+            alert(`Xin chào ${name}, bạn đã đăng nhập thành công!`);
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            loginSuccess(document.getElementById('loginUsername').value || "Nguyễn Văn A");
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value || "Bạn Đọc Mới";
+            const email = document.getElementById('regEmail').value || "";
+            customersData.push({ id: "KH" + Math.floor(100 + Math.random() * 900), name, email, phone: "0912345678", role: "Thành viên" });
+            saveAllStorage();
+            loginSuccess(name);
+        }
+
+        logoutBtn.onclick = () => {
+            userProfile.style.display = 'none';
+            navLoginBtn.style.display = 'inline-flex';
+            navRegisterBtn.style.display = 'inline-flex';
+            alert("Đã đăng xuất tài khoản!");
+        };
+
+        /* KHỞI ĐỘNG ỨNG DỤNG */
+        renderApp();
+        updateCartUI();
+    </script>
+</body>
+
+</html>

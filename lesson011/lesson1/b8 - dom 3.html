@@ -22,18 +22,22 @@
     <div>
         <label for="pass">Password:</label>
         <input type="password" name="password" id="pass" />
-        <p class="err">Pas chứa it nhất 8 ký tự và có chữ hoa và số</p>
+        <p class="err">Pass chứa it nhất 8 ký tự và có chữ hoa và số</p>
     </div>
     <div>
-        <button>Đăng nhập</button>
+        <button id="btn-login">Đăng nhập</button>
         <button id="btn-show-pass">Hiện thị mật khẩu</button>
+
+        <p id="success" style="color: green; display: none;">
+            Đăng nhập thành công
+        </p>
     </div>
 
     <script>
         var regxEmail =
             /^(?!.*\.\.)[A-Za-z0-9]+([._%+-]?[A-Za-z0-9]+)*@[A-Za-z0-9]+([.-]?[A-Za-z0-9]+)*\.[A-Za-z]{2,}$/;
         var regxPass =
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;     // có ít nhất 1 chữ thường, ít nhất 1 chữ hoa, ít nhất 1 số , ít nhất 8 ký tự
         var inputEmail = document.getElementById("email");
         var inputPass = document.getElementById("pass");
         document.getElementById("btn-show-pass").onclick = function () {
@@ -60,6 +64,26 @@
                 this.nextElementSibling.style.display = "block";
             } else {
                 this.nextElementSibling.style.display = "none";
+            }
+        };
+
+        document.getElementById("btn-login").onclick = function () {
+
+            var emailCorrect = regxEmail.test(inputEmail.value);
+            var passCorrect = regxPass.test(inputPass.value);
+
+            if (emailCorrect && passCorrect) {
+                document.getElementById("success").style.display = "block";
+            } else {
+                document.getElementById("success").style.display = "none";
+
+                if (!emailCorrect) {
+                    inputEmail.nextElementSibling.style.display = "block";
+                }
+
+                if (!passCorrect) {
+                    inputPass.nextElementSibling.style.display = "block";
+                }
             }
         };
     </script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viết ứng dụng  - Thay đổi màu nội dung khi người dùng chọn màu</title>
+</head>
+<body>
+    <header>
+        <h1>Viết ứng dụng  - Thay đổi màu nội dung khi người dùng chọn màu</h1>
+        <hr/>
+    </header>
+
+    <section>
+        <h2>Chọn màu chữ</h2>
+        <div>
+            <button data-value="Red">Đỏ</button>
+            <button data-value="Blue">Xanh</button>
+            <button data-value="Yellow">Vàng</button>
+            <button data-value="Gray">Ghi</button>
+            <button data-value="Violet">Tím</button>
+        </div>
+        <div class="noi-dung">Lập trình Web PHP</div>
+    </section>
+
+    <!-- Nhúng jquery - cdn -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0/jquery.min.js"></script>
+     <script>
+        $(document).ready(function(){
+            console.log("Running....");
+            // alert("running...") 
+
+            // Gán màu cho button
+            $("button").each(function(){
+                // lấy giá trị từ thuộc tính data-value
+                let val = $(this).attr("data-value");
+                console.log(val);
+                $(this).css('color', val); 
+            });
+
+            // khi click vào button => đổi màu nội dung "Lập trình web PHP"
+            $("button").click(function(){
+                // lấy giá trị từ thuộc tính data-value
+                let val = $(this).attr("data-value");
+                $('.noi-dung').css('color', val); 
+            });
+        });
+     </script>
+</body>
+</html>
