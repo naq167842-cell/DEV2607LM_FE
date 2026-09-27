@@ -1,0 +1,643 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Montserrat', Arial, sans-serif;
+    background-color: rgb(245, 247, 247);
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 18%;
+    background-color: #fff;
+}
+
+.logo img {
+    height: 70px;
+    display: block;
+}
+
+.navbar-list {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.navbar-list a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 800px; 
+    overflow: hidden;
+}
+
+.banner-anh {
+    width: 100%;
+    height: 100%;
+    object-position: center right; 
+    display: block;
+}
+
+.banner-chu {
+    position: absolute;
+    top: 18%;               
+    left: 20%;               
+    max-width: 800px;       
+}
+
+.banner-chu h1 {
+    font-size: 43px;
+    font-weight: 900;
+    color: #1f2142;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+
+.banner-chu h1 span {
+    color: #c0905d;         
+    display: block;
+}
+
+.banner-chu p {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+    width: 490px;
+}
+
+.lien-he {
+    background-color: #c0905d;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    /* text-transform: uppercase; */
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.lien-he:hover {
+    background-color: #9e7143; 
+}
+/* --------------------------------------------------------------------- */
+.loai-phong{
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1250px;
+    max-height: 450px;
+    margin: -40px auto 40px auto;
+    padding: 40px 40px;
+    margin-bottom: 80px;
+}
+
+.phong{
+    width: 25%;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.phong img{
+    height: 110px;
+}
+
+.phong p{
+    font-size: 15px;
+    font-weight: bold;
+    color: #20264d;
+}
+/* --------------------------------------------------------------------- */
+.product-spnb{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 0 70px 0;
+}
+
+.tieu-de-spnb{
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.tieu-de-spnb h2{
+    font-size: 27px;
+    font-weight: bold;
+    color: #161948;
+}
+
+.gach-spnb{
+    width: 150px;
+    height: 4px;
+    background-color: #bd8d54;
+    margin: 8px auto 0 auto;
+}
+
+.product-home{
+    position: relative;
+    /* background-color: rgb(245,247,247); */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.the{
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.the img {
+    width: 100%;
+    height: 280px;
+    margin-bottom: 13px;
+    display: block;
+}
+
+.the h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #20264d;
+}
+
+.ngoi-sao {
+    color: #c77d24;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.mo-ta {
+    font-size: 12px;
+    color: #5e5c5c;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-size: 11px;
+    font-weight: 800;
+    color: #1b1a1a;
+}
+/* ---------------------------------------------------------------------------------------- */
+.product-we {
+    background: linear-gradient(rgba(36, 36, 36, 0.8), rgba(29, 29, 29, 0.8)), url('../assets-photo/anh-bia.png');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 0 70px 0;
+    width: 100%;
+}
+
+.noi-dung-we {
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.tieu-de-we {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.tieu-de-we h2 {
+    color: #fff;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.gach-we {
+    width: 140px;
+    height: 4px;
+    background-color: #bd8d54;
+    margin: 8px auto 0 auto;
+}
+
+.thong-tin {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 70px;
+}
+
+.anh-xuong {
+    flex: 1;
+}
+
+.anh-xuong img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gioi-thieu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.gioi-thieu h3 {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.gioi-thieu span {
+    color: #bd8d54;
+}
+
+.gioi-thieu p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.anh-nho {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.anh {
+    flex: 1;
+    height: 145px;
+    position: relative;
+}
+
+.anh img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.xem-them a {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(44, 43, 43, 0.65);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ly-do-chon {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.ly-do-chon h2 {
+    color: #fff;
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.gach-chan {
+    width: 160px;
+    height: 4px;
+    background-color: #bd8d54;
+    margin: 8px auto 0 auto;
+}
+
+.reason {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.o-ly-do {
+    width: calc(38% - 80px);
+    background-color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.anh-phu img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    display: block;
+}
+
+.chu-ly-do h3 {
+    color: #bd8d54;
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.chu-ly-do p {
+    color: #333333;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.tin-tuc{
+    background-color: #fff;
+    padding: 60px 0 70px 0;
+}
+
+.tieu-de-chinh{
+    max-width: 1150px;
+    width: 90%;
+    margin: 0 auto;    
+}
+
+.chu-tieu-de{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.chu-tieu-de h2{
+    color: #20264d;
+    font-size: 28px;
+    font-weight: bold; 
+    letter-spacing: 0.5px;   
+}
+
+.gach-tin-tuc{
+    width: 140px;
+    height: 4px;
+    background-color: #bd8d54;
+    margin: 3px auto 0 auto;
+}
+
+.hang-tin-tuc{
+    display: flex;
+    gap: 35px;
+    align-items: flex-start;
+}
+
+.tin-lon{
+    flex: 1.1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.anh-tin-lon{
+    width: 100%;
+    height: 600px;    
+}
+
+.anh-tin-lon img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.chu-tin-lon{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(189, 141, 84, 0.95);
+    color: #fff;
+    opacity: 0;
+    padding: 15px 25px;
+    transform: translateY(15px);         
+    transition: all 0.35s ease;
+}
+
+.chu-tin-lon h3{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.chu-tin-lon p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: black;
+    opacity: 1;
+}
+
+.tin-lon:hover .chu-tin-lon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hang-tin-nho{
+    flex: 1;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.tin-nho{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.anh-tin-nho{
+    width: 170px;
+    height: 163px;
+    flex-shrink: 0;
+}
+
+.anh-tin-nho img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.chu-tin-nho h4 {
+    color: #bd8d54;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.chu-tin-nho p {
+    color: #777777;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;    
+}
+
+.xem-them-tin {
+    margin-top: 5px;
+}
+
+.xem-them-tin a {
+    color: #bd8d54;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.xem-them-tin a:hover {
+    text-decoration: underline;
+}
+
+.doi-tac{
+    background-color: #fff;
+    padding: 60px 0 90px 0;
+}
+
+.noi-dung-dt{
+    max-width: 1200px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.tieu-de-dt{
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.tieu-de-dt h2{
+    font-size: 28px;
+    font-weight: bold;
+    color: #20264d;
+    letter-spacing: 0.5px;
+}
+
+.gach-dt{
+    width: 140px;
+    height: 4px;
+    background-color: #bd8d54;
+    margin: 8px auto 0 auto;
+}
+
+.hang-doi-tac{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.hang-doi-tac img{
+    height: 120px;
+    max-width: 160px;
+    object-fit: contain;
+}
+
+.lien-he-we {
+    position: relative;
+    background: url('../assets-photo/lienhe-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 130px 0 90px 0;
+}
+
+.anh-ghe {
+    position: absolute;
+    top: -160px;
+    left: 2%;
+}
+
+
+.anh-ghe img {
+    height: 400px;
+    object-fit: contain;
+    display: block;
+}
+
+.thong-tin-we {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.thong-tin-trai {
+    min-width: 570px;
+}
+
+.thong-tin-trai h3 {
+    color: #fff;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+.thong-tin-trai strong {
+    font-weight: 800;
+}
+
+.gach-tt {
+    width: 180px;
+    height: 5px;
+    background-color: #fff;
+    margin-top: 4px;
+}
+
+.thong-tin-phai {
+    display: flex;
+    flex-direction: column;
+}
+
+.thong-tin-phai p {
+    color: #fff;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.form-gui {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-gui input {
+    width: 350px;
+    height: 50px;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    color: #0b0b0b;
+    background-color: #fff;
+}
+
+.form-gui button {
+    height: 50px;
+    padding: 0 36px;
+    border: none;
+    background-color: #fff;
+    color: #0b0c0c;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.form-gui button:hover {
+    background-color: #f0f0f0;
+}
+
+
+
