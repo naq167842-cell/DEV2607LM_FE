@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SẢN PHẨM - HOÀNG HOAN</title>
+    <link rel="stylesheet" href="assets-css/sanpham.css">
+    <link rel="stylesheet" href="assets-css/header.css">
+    <link rel="stylesheet" href="assets-css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo"><img src="assets-photo/logo.png" alt="logo"></div>
+
+        <nav class="navbar">
+            <ul class="navbar-list">
+                <li><a href="trangchu.html">Trang chủ</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li><a href="sanpham.html" class="active" aria-current="page">Sản phẩm</a></li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="doitac.html">Đối tác</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <a href="login.html" class="account-link" id="account-guest"><i class="fa-regular fa-user"></i><span>Đăng nhập / Đăng ký</span></a>
+            <div class="user-dropdown" id="account-user" style="display: none;">
+                <div class="user-info-btn"><i class="fa-regular fa-user user-icon"></i><div class="user-text"><span class="user-sub">Tài khoản</span><strong class="user-name" id="user-display-name"></strong></div><i class="fa-solid fa-chevron-down arrow-icon"></i></div>
+                <ul class="dropdown-menu"><li><a href="javascript:void(0)" onclick="logout()" class="logout-link"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li></ul>
+            </div>
+            <a href="giohang.html" class="cart-link"><div class="cart-icon-wrapper"><i class="fa-solid fa-cart-shopping"></i><span class="cart-badge" id="soLuongGio">0</span></div><span>Giỏ hàng</span></a>
+        </div>
+    </header>
+
+    <div class="banner">
+        <button type="button" class="sang-trai">&lt;</button>
+        <button type="button" class="sang-phai">&gt;</button>
+
+        <div class="slides">
+            <div class="item">
+                <img src="assets-photo/anh-sp1.png" alt="anh-sp1" class="banner-img">
+                <div class="noi-dung-dau">
+                    <span class="chu-dau">Trải nghiệm</span>
+                    <h2>không gian hiện đại</h2>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="assets-photo/anh-sp2.png" alt="anh-sp2" class="banner-img">
+                <div class="noi-dung-dau">
+                    <span class="chu-dau">Tinh tế</span>
+                    <h2>phong cách đẳng cấp</h2>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="assets-photo/anh-sp3.png" alt="anh-sp3" class="banner-img">
+                <div class="noi-dung-dau">
+                    <span class="chu-dau">Bình yên</span>
+                    <h2>ấm cúng từng góc nhỏ</h2>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="assets-photo/anh-sp4.png" alt="anh-sp4" class="banner-img">
+                <div class="noi-dung-dau">
+                    <span class="chu-dau">Thư giãn</span>
+                    <h2>tận hưởng từng khoảng khắc</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="banner-dot">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <div class="danh-muc-sp">
+
+        <!-- 1. PHÒNG KHÁCH -->
+        <div class="khung-danh-muc">
+            <div class="thanh-tieu-de">
+                <div class="tieu-de-trai">
+                    <h2>PHÒNG KHÁCH</h2>
+                    <div class="gach-ngan"></div>
+                </div>
+            </div>
+
+            <div class="bang-truot-san-pham">
+                <button type="button" class="btn-truot nut-truot-trai">&#10094;</button>
+
+                <div class="luoi-san-pham">
+                    <!-- SP 1 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ban-uong-nuoc-1">
+                                <img src="assets-photo/ban-uong-nuoc1.jpg" alt="Bàn uống nước 1">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ban-uong-nuoc-1">BÀN UỐNG NƯỚC</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">8.999.000 VNĐ</span>
+                                <span class="gia-cu">12.850.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 153</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 2 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ban-uong-nuoc-2">
+                                <img src="assets-photo/ban-uong-nuoc2.png" alt="Bàn uống nước 2">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ban-uong-nuoc-2">BÀN UỐNG NƯỚC 2</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">3.999.000 VNĐ</span>
+                                <span class="gia-cu">5.700.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 89</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 3 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ke-tv">
+                                <img src="assets-photo/phong-khach-ke-ti-vi.png" alt="Kệ TV">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ke-tv">KỆ TV GỖ LIM</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">12.999.000 VNĐ</span>
+                                <span class="gia-cu">18.500.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 210</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 4 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ke-de-do">
+                                <img src="assets-photo/sp-4.jpg" alt="Kệ để đồ">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ke-de-do">KỆ ĐỂ ĐỒ 4 NGĂN</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">2.499.000 VNĐ</span>
+                                <span class="gia-cu">3.570.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 114</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 5 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=sofa-goc-hien-dai">
+                                <img src="assets-photo/sofa-goc.png" alt="Sofa góc hiện đại">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=sofa-goc-hien-dai">SOFA GÓC HIỆN
+                                    ĐẠI</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">11.890.000 VNĐ</span>
+                                <span class="gia-cu">16.990.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 95</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 6 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ban-tra-mat-da">
+                                <img src="assets-photo/ban-tra-mat-da.png" alt="Bàn trà mặt đá">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ban-tra-mat-da">BÀN TRÀ MẶT ĐÁ NHẬP
+                                    KHẨU</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">4.550.000 VNĐ</span>
+                                <span class="gia-cu">6.500.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 78</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 7 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=tu-giay-thong-minh">
+                                <img src="assets-photo/tu-giay.png" alt="Tủ giày thông minh">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=tu-giay-thong-minh">TỦ GIÀY THÔNG
+                                    MINH</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">2.190.000 VNĐ</span>
+                                <span class="gia-cu">3.150.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 180</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-truot nut-truot-phai">&#10095;</button>
+            </div>
+        </div>
+
+        <!-- 2. PHÒNG NGỦ -->
+        <div class="khung-danh-muc">
+            <div class="thanh-tieu-de">
+                <div class="tieu-de-trai">
+                    <h2>PHÒNG NGỦ</h2>
+                    <div class="gach-ngan"></div>
+                </div>
+            </div>
+
+            <div class="bang-truot-san-pham">
+                <button type="button" class="btn-truot nut-truot-trai">&#10094;</button>
+
+                <div class="luoi-san-pham">
+                    <!-- SP 1 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=giuong-chau-au">
+                                <img src="assets-photo/sp-1.jpg" alt="Giường châu Âu">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=giuong-chau-au">GIƯỜNG CHÂU ÂU BỌC
+                                    NỈ</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">9.999.000 VNĐ</span>
+                                <span class="gia-cu">14.280.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 260</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 2 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=giuong-go-soi">
+                                <img src="assets-photo/tintuc-5.png" alt="Giường gỗ">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=giuong-go-soi">GIƯỜNG GỖ SỒI TỰ
+                                    NHIÊN</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">7.999.000 VNĐ</span>
+                                <span class="gia-cu">11.450.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 147</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 3 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ke-dau-giuong">
+                                <img src="assets-photo/ke-dau-giuong.png" alt="Kệ đầu giường">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ke-dau-giuong">KỆ ĐẦU GIƯỜNG 2
+                                    NGĂN</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">1.999.000 VNĐ</span>
+                                <span class="gia-cu">2.850.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 195</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 4 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=tu-quan-ao">
+                                <img src="assets-photo/sp-3.png" alt="Tủ quần áo">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=tu-quan-ao">TỦ QUẦN ÁO 4 CÁNH</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">10.499.000 VNĐ</span>
+                                <span class="gia-cu">14.990.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 210</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 5 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ban-trang-diem-led">
+                                <img src="assets-photo/ban-trang-diem.png" alt="Bàn trang điểm">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ban-trang-diem-led">BÀN TRANG ĐIỂM
+                                    GƯƠNG LED</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">3.650.000 VNĐ</span>
+                                <span class="gia-cu">5.200.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 110</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 6 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=nem-cao-su-thien-nhien">
+                                <img src="assets-photo/nem-cao-su.png" alt="Nệm cao su">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=nem-cao-su-thien-nhien">NỆM CAO SU
+                                    THIÊN NHIÊN</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">8.290.000 VNĐ</span>
+                                <span class="gia-cu">11.850.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 132</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 7 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=den-ngu-cam-ung">
+                                <img src="assets-photo/den-ngu.png" alt="Đèn ngủ">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=den-ngu-cam-ung">ĐÈN NGỦ CẢM ỨNG ĐỂ
+                                    BÀN</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">650.000 VNĐ</span>
+                                <span class="gia-cu">930.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 220</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-truot nut-truot-phai">&#10095;</button>
+            </div>
+        </div>
+
+        <!-- 3. PHÒNG BẾP -->
+        <div class="khung-danh-muc">
+            <div class="thanh-tieu-de">
+                <div class="tieu-de-trai">
+                    <h2>PHÒNG BẾP</h2>
+                    <div class="gach-ngan"></div>
+                </div>
+            </div>
+
+            <div class="bang-truot-san-pham">
+                <button type="button" class="btn-truot nut-truot-trai">&#10094;</button>
+
+                <div class="luoi-san-pham">
+                    <!-- SP 1 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ban-an-6-ghe">
+                                <img src="assets-photo/ban-an-6.png" alt="Bàn ăn 6">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ban-an-6-ghe">BÀN ĂN 6 GHẾ GỖ
+                                    HƯƠNG</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">6.999.000 VNĐ</span>
+                                <span class="gia-cu">9.999.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 140</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 2 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ban-tra-phong-an">
+                                <img src="assets-photo/ban-tra.png" alt="Bàn trà">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ban-tra-phong-an">BÀN TRÀ PHÒNG ĂN</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">3.999.000 VNĐ</span>
+                                <span class="gia-cu">5.700.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 96</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 3 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ban-an-4-ghe">
+                                <img src="assets-photo/ban-an-4.png" alt="Bàn ăn 4">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ban-an-4-ghe">BÀN ĂN 4 GHẾ GỖ LIM</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">2.999.000 VNĐ</span>
+                                <span class="gia-cu">4.280.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 185</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 4 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ban-an-8-ghe">
+                                <img src="assets-photo/ban-an-8.png" alt="Bàn ăn 8">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ban-an-8-ghe">BÀN ĂN 8 GHẾ GỖ SƯA</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">12.499.000 VNĐ</span>
+                                <span class="gia-cu">17.850.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 72</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 5 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=tu-bep-chu-l">
+                                <img src="assets-photo/tu-bep.png" alt="Tủ bếp">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=tu-bep-chu-l">TỦ BẾP ACRYLIC CHỮ L</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">18.900.000 VNĐ</span>
+                                <span class="gia-cu">27.000.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 53</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 6 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ghe-quay-bar">
+                                <img src="assets-photo/ghe-bar.png" alt="Ghế quầy bar">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ghe-quay-bar">GHẾ QUẦY BAR NÂNG HẠ</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">1.150.000 VNĐ</span>
+                                <span class="gia-cu">1.650.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 230</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 7 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=ke-gia-vi-inox">
+                                <img src="assets-photo/ke-gia-vi.png" alt="Kệ gia vị">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=ke-gia-vi-inox">KỆ GIA VỊ INOX 304</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">780.000 VNĐ</span>
+                                <span class="gia-cu">1.115.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 340</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-truot nut-truot-phai">&#10095;</button>
+            </div>
+        </div>
+
+        <!-- 4. PHÒNG TẮM -->
+        <div class="khung-danh-muc">
+            <div class="thanh-tieu-de">
+                <div class="tieu-de-trai">
+                    <h2>PHÒNG TẮM</h2>
+                    <div class="gach-ngan"></div>
+                </div>
+            </div>
+
+            <div class="bang-truot-san-pham">
+                <button type="button" class="btn-truot nut-truot-trai">&#10094;</button>
+
+                <div class="luoi-san-pham">
+                    <!-- SP 1 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=bon-rua-mat">
+                                <img src="assets-photo/bon-rua-mat.png" alt="Bồn rửa mặt">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=bon-rua-mat">BỒN RỬA MẶT LAVABO SỨ</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">3.999.000 VNĐ</span>
+                                <span class="gia-cu">5.710.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 110</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 2 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=bon-rua-tay">
+                                <img src="assets-photo/bon-rua-tay.png" alt="Bồn rửa tay">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=bon-rua-tay">BỒN RỬA TAY VÂN GỖ</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">3.999.000 VNĐ</span>
+                                <span class="gia-cu">5.710.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 75</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 3 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=bon-rua-2">
+                                <img src="assets-photo/bon-rua-2.png" alt="Bồn rửa 2">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=bon-rua-2">BỒN RỬA 2 NGĂN ĐÔI</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">4.999.000 VNĐ</span>
+                                <span class="gia-cu">7.140.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 89</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 4 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=tu-am-tuong">
+                                <img src="assets-photo/tu-am-tuong.png" alt="Tủ âm tường">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=tu-am-tuong">TỦ ÂM TƯỜNG CHỐNG ẨM</a>
+                            </h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">5.499.000 VNĐ</span>
+                                <span class="gia-cu">7.850.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 64</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 5 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=guong-den-led-cam-ung">
+                                <img src="assets-photo/guong-phong-tam.png" alt="Gương led cảm ứng">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=guong-den-led-cam-ung">GƯƠNG LED CẢM
+                                    ỨNG SẤY MỜ</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">1.850.000 VNĐ</span>
+                                <span class="gia-cu">2.650.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 190</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 6 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=cay-sen-tam-nhiet-do">
+                                <img src="assets-photo/sen-tam.png" alt="Cây sen tắm">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=cay-sen-tam-nhiet-do">CÂY SEN TẮM
+                                    NHIỆT ĐỘ KHÓA NÓNG</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">3.250.000 VNĐ</span>
+                                <span class="gia-cu">4.650.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 240</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 7 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=bon-tam-massage">
+                                <img src="assets-photo/bon-tam.png" alt="Bồn tắm">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=bon-tam-massage">BỒN TẮM ACRYLIC CAO
+                                    CẤP</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">15.400.000 VNĐ</span>
+                                <span class="gia-cu">22.000.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 35</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-truot nut-truot-phai">&#10095;</button>
+            </div>
+        </div>
+
+        <!-- 7. CẦU THANG -->
+        <div class="khung-danh-muc">
+            <div class="thanh-tieu-de">
+                <div class="tieu-de-trai">
+                    <h2>CẦU THANG</h2>
+                    <div class="gach-ngan"></div>
+                </div>
+            </div>
+
+            <div class="bang-truot-san-pham">
+                <button type="button" class="btn-truot nut-truot-trai">&#10094;</button>
+
+                <div class="luoi-san-pham">
+                    <!-- SP 1 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=cau-thang-1">
+                                <img src="assets-photo/cau-thang-1.png" alt="Cầu thang 1">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=cau-thang-1">CẦU THANG XƯƠNG CÁ HIỆN
+                                    ĐẠI</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">10.999.000 VNĐ</span>
+                                <span class="gia-cu">15.700.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 45</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 2 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=cau-thang-2">
+                                <img src="assets-photo/cau-thang-2.png" alt="Cầu thang 2">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=cau-thang-2">CẦU THANG KÍNH CƯỜNG
+                                    LỰC</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">11.999.000 VNĐ</span>
+                                <span class="gia-cu">17.140.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 60</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 3 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=cau-thang-3">
+                                <img src="assets-photo/cau-thang-3.png" alt="Cầu thang 3">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=cau-thang-3">CẦU THANG TAY VỊN GỖ
+                                    LIM</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">7.999.000 VNĐ</span>
+                                <span class="gia-cu">11.420.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 78</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 4 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=cau-thang-4">
+                                <img src="assets-photo/cau-thang-4.png" alt="Cầu thang 4">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=cau-thang-4">CẦU THANG CỔ ĐIỂN GỖ
+                                    SƯA</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">15.499.000 VNĐ</span>
+                                <span class="gia-cu">22.140.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 32</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 5 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=vach-ngan-cau-thang-cnc">
+                                <img src="assets-photo/vach-ngan-cau-thang.png" alt="Vách ngăn cầu thang">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=vach-ngan-cau-thang-cnc">VÁCH NGĂN CẦU
+                                    THANG CNC GỖ MDF</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">450.000 VNĐ</span>
+                                <span class="gia-cu">640.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 310</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 6 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=tru-de-ba-cau-thang">
+                                <img src="assets-photo/tru-cau-thang.png" alt="Trụ deba">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=tru-de-ba-cau-thang">TRỤ DEBA CẦU
+                                    THANG GỖ GÕ ĐỎ</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">2.150.000 VNĐ</span>
+                                <span class="gia-cu">3.070.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 95</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+
+                    <!-- SP 7 -->
+                    <div class="the-sp">
+                        <div class="khung-anh-sp">
+                            <span class="giam-gia">-30%</span>
+                            <a href="chitietsanpham.html?id=den-led-chan-cau-thang">
+                                <img src="assets-photo/den-cau-thang.png" alt="Đèn led cầu thang">
+                            </a>
+                        </div>
+                        <div class="thong-tin-sp">
+                            <h3 class="ten-sp"><a href="chitietsanpham.html?id=den-led-chan-cau-thang">ĐÈN LED BẬC
+                                    THANG CẢM ỨNG BƯỚC CHÂN</a></h3>
+                            <div class="gia-sp">
+                                <span class="gia-moi">320.000 VNĐ</span>
+                                <span class="gia-cu">450.000 VNĐ</span>
+                            </div>
+                            <div class="hang-danh-gia">
+                                <span class="danh-gia">★★★★★</span>
+                                <span class="da-ban">Đã bán 410</span>
+                            </div>
+                            <button type="button" class="btn-them-gio">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-truot nut-truot-phai">&#10095;</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="noi-dung-cuoi">
+            <div class="cot-1">
+                <h3>THÔNG TIN CHUNG</h3>
+                <div class="gach-footer"></div>
+                <h4>CÔNG TY TNHH HOÀNG HOAN</h4>
+                <p><span class="icon-tt">&#9990;</span> 0999.999.999</p>
+                <p><span class="icon-tt">&#9993;</span> cskh@hoanghoan.vn</p>
+                <p><span class="icon-tt">&#9906;</span> Số 1 Nguyễn Trãi, Thanh Xuân, Hà Nội</p>
+            </div>
+
+            <div class="cot-2">
+                <h4>VỀ CHÚNG TÔI</h4>
+                <div class="gach-footer"></div>
+                <ul>
+                    <li><a href="gioithieu.html">Giới thiệu</a></li>
+                    <li><a href="sanpham.html">Sản phẩm</a></li>
+                    <li><a href="tintuc.html">Tin tức</a></li>
+                    <li><a href="doitac.html">Đối tác</a></li>
+                </ul>
+            </div>
+
+            <div class="cot-3">
+                <h4>KẾT NỐI VỚI CHÚNG TÔI</h4>
+                <div class="gach-footer"></div>
+                <div class="mang-xa-hoi">
+                    <a href="https://www.facebook.com/" class="icon-mxh" aria-label="Facebook"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.7c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8z"/></svg></a>
+                    <a href="https://zalo.me/" class="icon-mxh" aria-label="Zalo"><svg class="footer-icon footer-icon--zalo" viewBox="0 0 48 30" aria-hidden="true"><text x="24" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="currentColor">Zalo</text></svg></a>
+                    <a href="mailto:cskh@hoanghoan.vn" class="icon-mxh" aria-label="Email"><svg class="footer-icon footer-icon--mail" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <p class="thong-bao-gio" id="thongBaoGio" role="status" aria-live="polite"></p>
+
+    <script src="assets-js/giohang-storage.js"></script>
+    <script src="assets-js/trangchu.js"></script>
+    <script src="assets-js/data.js"></script>
+    <script src="assets-js/sanpham.js"></script>
+    <script src="assets-js/header.js"></script>
+</body>
+
+</html>

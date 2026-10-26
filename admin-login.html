@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Đăng nhập quản trị - Hoàng Hoan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="assets-css/admin-login.css">
+</head>
+
+<body>
+    <main class="admin-login">
+        <a class="admin-brand" href="trangchu.html">
+            <img src="assets-photo/logo.png" alt="Hoàng Hoan">
+            <span>HOÀNG HOAN <small>TRANG QUẢN TRỊ</small></span>
+        </a>
+
+        <section class="login-card" aria-labelledby="login-title">
+            <div class="login-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+            <p class="eyebrow">KHU VỰC DÀNH CHO QUẢN TRỊ VIÊN</p>
+            <h1 id="login-title">Đăng nhập admin</h1>
+            <p class="intro">Đăng nhập để tiếp tục đến trang quản trị Hoàng Hoan.</p>
+
+            <form id="admin-login-form">
+                <label for="admin-account">Email quản trị</label>
+                <input id="admin-account" name="account" type="email" autocomplete="username"
+                    placeholder="Nhập email quản trị" required>
+
+                <label for="admin-password">Mật khẩu</label>
+                <div class="password-field">
+                    <input id="admin-password" name="password" type="password" autocomplete="current-password"
+                        placeholder="Nhập mật khẩu" required>
+                    <button class="toggle-password" type="button" id="toggle-password" aria-label="Hiện mật khẩu">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+
+                <p class="login-message" id="login-message" role="status" aria-live="polite"></p>
+                <button class="submit-button" type="submit">Đăng nhập</button>
+            </form>
+
+            <p class="back-link"><a href="login.html"><i class="fa-solid fa-arrow-left"></i> Quay lại đăng ký / đăng nhập</a></p>
+            <p class="setup-note">Đăng nhập demo trên trình duyệt. Không dùng cách này cho website công khai vì thông tin đăng nhập nằm trong JavaScript.</p>
+        </section>
+    </main>
+    <script src="assets-js/admin-login.js"></script>
+</body>
+
+</html>

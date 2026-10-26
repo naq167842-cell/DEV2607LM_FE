@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIỎ HÀNG - HOÀNG HOAN</title>
+    <link rel="stylesheet" href="assets-css/giohang.css">
+    <link rel="stylesheet" href="assets-css/header.css">
+    <link rel="stylesheet" href="assets-css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo"><a href="trangchu.html"><img src="assets-photo/logo.png" alt="Hoàng Hoan"></a></div>
+
+        <nav class="navbar">
+            <ul class="navbar-list">
+                <li><a href="trangchu.html">Trang chủ</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li><a href="sanpham.html">Sản phẩm</a></li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="doitac.html">Đối tác</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <a href="login.html" class="account-link" id="account-guest"><i class="fa-regular fa-user"></i><span>Đăng nhập / Đăng ký</span></a>
+            <div class="user-dropdown" id="account-user" style="display: none;">
+                <div class="user-info-btn"><i class="fa-regular fa-user user-icon"></i><div class="user-text"><span class="user-sub">Tài khoản</span><strong class="user-name" id="user-display-name"></strong></div><i class="fa-solid fa-chevron-down arrow-icon"></i></div>
+                <ul class="dropdown-menu"><li><a href="javascript:void(0)" onclick="logout()" class="logout-link"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li></ul>
+            </div>
+            <a href="giohang.html" class="cart-link dang-chon" aria-current="page"><div class="cart-icon-wrapper"><i class="fa-solid fa-cart-shopping"></i><span class="cart-badge" id="soLuongGio">0</span></div><span>Giỏ hàng</span></a>
+        </div>
+    </header>
+
+    <main class="gh-main">
+        <h1 class="gh-tieu-de">Giỏ hàng <span class="gh-dem" id="demSp"></span></h1>
+
+        <!-- Giỏ trống -->
+        <section class="gh-trong" id="gioTrong" hidden>
+            <div class="gh-trong-icon" aria-hidden="true">&#128722;</div>
+            <h2>Giỏ hàng của bạn đang trống</h2>
+            <p>Hãy chọn những sản phẩm nội thất yêu thích và thêm vào giỏ hàng nhé.</p>
+            <a class="btn-chinh" href="sanpham.html">Khám phá sản phẩm</a>
+        </section>
+
+        <!-- Có hàng -->
+        <div class="gh-bo-cuc" id="gioCoHang" hidden>
+            <section class="gh-danh-sach" aria-label="Sản phẩm trong giỏ">
+                <ul class="gh-ds" id="dsGio"></ul>
+                <div class="gh-cuoi-ds">
+                    <a class="gh-link-tiep" href="sanpham.html">&larr; Tiếp tục mua sắm</a>
+                    <button type="button" class="gh-xoa-het" id="xoaHet">Xóa tất cả</button>
+                </div>
+            </section>
+
+            <aside class="gh-tom-tat" aria-label="Tóm tắt đơn hàng">
+                <h2>Tóm tắt đơn hàng</h2>
+
+                <dl class="gh-bang">
+                    <div>
+                        <dt>Tạm tính</dt>
+                        <dd id="tamTinh">0 VNĐ</dd>
+                    </div>
+                    <div>
+                        <dt>Phí vận chuyển</dt>
+                        <dd id="phiShip">0 VNĐ</dd>
+                    </div>
+                    <div class="gh-tong">
+                        <dt>Tổng cộng</dt>
+                        <dd id="tongCong">0 VNĐ</dd>
+                    </div>
+                </dl>
+
+                <p class="gh-goi-y" id="goiYShip"></p>
+                <div class="gh-thanh" aria-hidden="true"><i id="thanhShip"></i></div>
+
+                <a class="btn-chinh gh-thanh-toan" id="btnThanhToan" href="thanh-toan.html">THANH TOÁN</a>
+                <a class="btn-phu gh-tiep-tuc" href="sanpham.html">TIẾP TỤC MUA SẮM</a>
+
+                <ul class="gh-cam-ket">
+                    <li><span aria-hidden="true">&#10003;</span> Giao hàng và lắp đặt tận nơi</li>
+                    <li><span aria-hidden="true">&#10003;</span> Bảo hành chính hãng</li>
+                    <li><span aria-hidden="true">&#10003;</span> Đổi trả khi lỗi do nhà sản xuất</li>
+                </ul>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Thanh thanh toán cố định trên di động -->
+    <div class="gh-thanh-mobile" id="thanhMobile" hidden>
+        <div class="gh-mb-tong">
+            <span>Tổng cộng</span>
+            <strong id="tongMobile">0 VNĐ</strong>
+        </div>
+        <a class="btn-chinh" id="btnThanhToanMb" href="thanh-toan.html">THANH TOÁN</a>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <span id="toastText"></span>
+        <button type="button" id="toastHoan" hidden>Hoàn tác</button>
+    </div>
+
+    <footer class="footer">
+        <div class="noi-dung-cuoi">
+            <div class="cot-1">
+                <h3>THÔNG TIN CHUNG</h3>
+                <div class="gach-footer"></div>
+                <h4>CÔNG TY TNHH HOÀNG HOAN</h4>
+                <p><span class="icon-tt">&#9990;</span> 0999.999.999</p>
+                <p><span class="icon-tt">&#9993;</span> cskh@hoanghoan.vn</p>
+                <p><span class="icon-tt">&#9906;</span> Số 1 Nguyễn Trãi, Thanh Xuân, Hà Nội</p>
+            </div>
+
+            <div class="cot-2">
+                <h4>VỀ CHÚNG TÔI</h4>
+                <div class="gach-footer"></div>
+                <ul>
+                    <li><a href="gioithieu.html">Giới thiệu</a></li>
+                    <li><a href="sanpham.html">Sản phẩm</a></li>
+                    <li><a href="tintuc.html">Tin tức</a></li>
+                    <li><a href="doitac.html">Đối tác</a></li>
+                </ul>
+            </div>
+
+            <div class="cot-3">
+                <h4>KẾT NỐI VỚI CHÚNG TÔI</h4>
+                <div class="gach-footer"></div>
+                <div class="mang-xa-hoi">
+                    <a href="https://www.facebook.com/" class="icon-mxh" aria-label="Facebook"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.7c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8z"/></svg></a>
+                    <a href="https://zalo.me/" class="icon-mxh" aria-label="Zalo"><svg class="footer-icon footer-icon--zalo" viewBox="0 0 48 30" aria-hidden="true"><text x="24" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="currentColor">Zalo</text></svg></a>
+                    <a href="mailto:cskh@hoanghoan.vn" class="icon-mxh" aria-label="Email"><svg class="footer-icon footer-icon--mail" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets-js/giohang-storage.js"></script>
+    <script src="assets-js/trangchu.js"></script>
+    <script src="assets-js/data.js"></script>
+    <script src="assets-js/giohang.js"></script>
+    <script src="assets-js/header.js"></script>
+</body>
+
+</html>

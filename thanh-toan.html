@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THANH TOÁN - HOÀNG HOAN</title>
+    <link rel="stylesheet" href="assets-css/thanh-toan.css">
+    <link rel="stylesheet" href="assets-css/footer.css">
+</head>
+
+<body>
+    <main class="tt-main">
+        <div class="tt-tieu-de">
+            <a href="giohang.html" class="tt-quay-lai">&larr; Quay lại giỏ hàng</a>
+            <p class="tt-nhan">HOÀNG HOAN · THANH TOÁN AN TOÀN</p>
+            <h1>Hoàn tất đơn hàng</h1>
+            <p>Vui lòng kiểm tra đơn hàng và điền thông tin giao hàng.</p>
+        </div>
+
+        <div class="tt-bo-cuc" id="checkout" hidden>
+            <form class="tt-form" id="formThanhToan">
+                <section class="tt-khoi">
+                    <div class="tt-khoi-tieu-de">
+                        <span>1</span>
+                        <div>
+                            <h2>Thông tin giao hàng</h2>
+                            <p>Thông tin để chúng tôi giao hàng đến bạn.</p>
+                        </div>
+                    </div>
+
+                    <div class="tt-truong">
+                        <label for="hoTen">Họ và tên</label>
+                        <input id="hoTen" name="hoTen" type="text" autocomplete="name" maxlength="100"
+                            placeholder="Nguyễn Văn A" required>
+                        <small id="tenTaiKhoanGhiChu" hidden>Tên khách hàng lấy từ tài khoản đang đăng nhập.</small>
+                    </div>
+                    <div class="tt-hai-cot">
+                        <div class="tt-truong">
+                            <label for="soDienThoai">Số điện thoại</label>
+                            <input id="soDienThoai" name="soDienThoai" type="tel" autocomplete="tel"
+                                inputmode="tel" pattern="(0[0-9]{9}|[+]84[0-9]{9})"
+                                title="Nhập số điện thoại Việt Nam gồm 10 số, hoặc bắt đầu bằng +84"
+                                placeholder="0912345678" required>
+                        </div>
+                        <div class="tt-truong">
+                            <label for="diaChi">Địa chỉ giao hàng</label>
+                            <input id="diaChi" name="diaChi" type="text" autocomplete="street-address"
+                                maxlength="200" placeholder="Số nhà, đường, phường/xã, tỉnh/thành" required>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tt-khoi">
+                    <div class="tt-khoi-tieu-de">
+                        <span>2</span>
+                        <div>
+                            <h2>Phương thức thanh toán</h2>
+                            <p>Chọn cách thanh toán phù hợp với bạn.</p>
+                        </div>
+                    </div>
+                    <div class="tt-phuong-thuc">
+                        <label class="tt-lua-chon">
+                            <input type="radio" name="phuongThuc" value="cod" checked>
+                            <span class="tt-radio"></span>
+                            <span class="tt-pt-icon" aria-hidden="true">&#128179;</span>
+                            <span><strong>Thanh toán khi nhận hàng</strong><small>Tiền mặt (COD)</small></span>
+                        </label>
+                        <label class="tt-lua-chon">
+                            <input type="radio" name="phuongThuc" value="the">
+                            <span class="tt-radio"></span>
+                            <span class="tt-pt-icon" aria-hidden="true">&#128179;</span>
+                            <span><strong>Thẻ tín dụng / ghi nợ</strong><small>Visa, Mastercard, JCB</small></span>
+                        </label>
+                        <label class="tt-lua-chon">
+                            <input type="radio" name="phuongThuc" value="vi">
+                            <span class="tt-radio"></span>
+                            <span class="tt-pt-icon" aria-hidden="true">&#128176;</span>
+                            <span><strong>Ví điện tử</strong><small>Quét mã hoặc mở ứng dụng ví</small></span>
+                        </label>
+                    </div>
+                    <p class="tt-luu-y">Thanh toán thẻ và ví điện tử hiện chỉ ghi nhận lựa chọn; website chưa kết nối cổng thanh toán.</p>
+                </section>
+
+                <p class="tt-loi" id="loiThanhToan" role="alert" hidden></p>
+                <button class="tt-nut tt-nut-xac-nhan" type="submit">
+                    <span>Xác nhận thanh toán</span>
+                    <strong id="nutTongTien">0 VNĐ</strong>
+                </button>
+                <p class="tt-bao-mat"><span aria-hidden="true">&#128274;</span> Thông tin của bạn được dùng để xử lý đơn hàng.</p>
+            </form>
+
+            <aside class="tt-don-hang" aria-label="Tóm tắt đơn hàng">
+                <h2>Đơn hàng của bạn <span id="soLuongSanPham"></span></h2>
+                <ul class="tt-danh-sach" id="danhSachSanPham"></ul>
+                <dl class="tt-tong-ket">
+                    <div><dt>Tạm tính</dt><dd id="tamTinh">0 VNĐ</dd></div>
+                    <div><dt>Phí vận chuyển</dt><dd id="phiVanChuyen">0 VNĐ</dd></div>
+                    <div class="tt-tong"><dt>Tổng thanh toán</dt><dd id="tongThanhToan">0 VNĐ</dd></div>
+                </dl>
+                <p class="tt-mien-phi" id="thongBaoVanChuyen"></p>
+                <a class="tt-tiep-tuc" href="sanpham.html">&larr; Tiếp tục mua sắm</a>
+            </aside>
+        </div>
+
+        <section class="tt-thanh-cong" id="thanhCong" role="status" hidden>
+            <div class="tt-thanh-cong-icon" aria-hidden="true">&#10003;</div>
+            <p class="tt-nhan">CẢM ƠN BẠN ĐÃ ĐẶT HÀNG</p>
+            <h1>Đơn hàng đã được ghi nhận</h1>
+            <p id="thongTinDonHang"></p>
+            <a class="tt-nut tt-nut-xac-nhan" href="sanpham.html">Tiếp tục mua sắm</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="noi-dung-cuoi">
+            <div class="cot-1">
+                <h3>THÔNG TIN CHUNG</h3>
+                <div class="gach-footer"></div>
+                <h4>CÔNG TY TNHH HOÀNG HOAN</h4>
+                <p><span class="icon-tt" aria-hidden="true">&#9990;</span> 0999.999.999</p>
+                <p><span class="icon-tt" aria-hidden="true">&#9993;</span> cskh@hoanghoan.vn</p>
+                <p><span class="icon-tt" aria-hidden="true">&#9906;</span> Số 1 Nguyễn Trãi, Thanh Xuân, Hà Nội</p>
+            </div>
+            <div class="cot-2">
+                <h4>VỀ CHÚNG TÔI</h4>
+                <div class="gach-footer"></div>
+                <ul>
+                    <li><a href="gioithieu.html">Giới thiệu</a></li>
+                    <li><a href="sanpham.html">Sản phẩm</a></li>
+                    <li><a href="tintuc.html">Tin tức</a></li>
+                    <li><a href="doitac.html">Đối tác</a></li>
+                </ul>
+            </div>
+            <div class="cot-3">
+                <h4>KẾT NỐI VỚI CHÚNG TÔI</h4>
+                <div class="gach-footer"></div>
+                <div class="mang-xa-hoi">
+                    <a href="https://www.facebook.com/" class="icon-mxh" aria-label="Facebook"><svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.7c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8z"/></svg></a>
+                    <a href="https://zalo.me/" class="icon-mxh" aria-label="Zalo"><svg class="footer-icon footer-icon--zalo" viewBox="0 0 48 30" aria-hidden="true"><text x="24" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="currentColor">Zalo</text></svg></a>
+                    <a href="mailto:cskh@hoanghoan.vn" class="icon-mxh" aria-label="Email"><svg class="footer-icon footer-icon--mail" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets-js/giohang-storage.js"></script>
+    <script src="assets-js/data.js"></script>
+    <script src="assets-js/thanh-toan.js"></script>
+</body>
+
+</html>
